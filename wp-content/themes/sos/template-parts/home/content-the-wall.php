@@ -17,7 +17,7 @@ if ( $walls->have_posts() ) { ?>
                     if($i % 2 != 0) echo '<div class="group-item">';
             ?>
             <div class="the-wall-item">
-                <a href="#" class="the-wall-img"><?php the_post_thumbnail(array(410, 280, 1)); ?></a>
+                <a href="#" class="the-wall-img"><?php the_post_thumbnail(array(410, 280)); ?></a>
                 <div class="the-wall__content">
                     <div class="the-wall-des"><?php echo wp_strip_all_tags(get_the_excerpt()); ?>
                     <a href="<?php the_permalink() ?>">Read More</a>

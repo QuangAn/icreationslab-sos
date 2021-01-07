@@ -4,13 +4,13 @@
     </div>
     <div class="block-content">
         <form action="" method="POST">
-            <div class="control">
+            <div class="control input">
                 <input type="text" name="name" placeholder="Name" required />
             </div>
-            <div class="control">
+            <div class="control input">
                 <input type="text" name="occupation" placeholder="Occupation" required />
             </div>
-            <div class="control">
+            <div class="control textarea">
                 <textarea name="message"placeholder="Message" required></textarea>
                 <div class="max-input">Max 150 characters</div>
             </div>
