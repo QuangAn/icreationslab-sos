@@ -1540,6 +1540,14 @@ header #quiz-link a:hover {
     padding: 30px 0;
 }
 
+.gform-success .action-quiz {
+    display: none !important;
+}
+
+.gform-success .quiz .block-content .process-bar #process-bar__current {
+    width: 100% !important;
+}
+
 .quiz .gform_wrapper .gform_footer {
     padding: 0;
     margin: 0;

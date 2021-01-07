@@ -11,7 +11,8 @@
     <div class="block-content">
         <div class="process-bar"><span id="process-bar__current"></span></div>
         <div class="quiz-content">
-           <?php gravity_form( 1, false, false, false, '', false ); ?>
+           <?php gravity_form( 1, false, false, true, '', true ); ?>
+
         </div>
         <div class="action-quiz">
             <a href="javascript:void(0)" id="quiz-back">BACK</a>
@@ -74,6 +75,9 @@
             }
             current_bar = (quiz / $count) * 100;
             jQuery('#process-bar__current').css("width", current_bar + '%');
+        });
+        jQuery(document).on('gform_confirmation_loaded', function(event, formId){
+            jQuery("body").addClass('gform-success');
         });
     }
     jQuery('document').ready(function(){

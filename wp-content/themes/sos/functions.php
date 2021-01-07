@@ -412,5 +412,14 @@ function loadpost_init() {
 
     $result = ob_get_clean(); 
     wp_send_json_success($result);
-    die();//bắt buộc phải có khi kết thúc
+    die();
+}
+
+add_action( 'gform_after_submission', 'custom_action_after_apc', 10, 2 );
+function custom_action_after_apc(){
+	add_filter('body_class', 'my_plugin_body_class');
+}
+function my_plugin_body_class($classes) {
+    $classes[] = 'gform-success';
+    return $classes;
 }
