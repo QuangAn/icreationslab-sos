@@ -51,14 +51,7 @@
 		<?php } ?>
 	</header><!-- #masthead -->
 <script>
-	function sticky_menu(menu, sticky) {
-        if (typeof sticky === 'undefined' || !jQuery.isNumeric(sticky)) sticky = 0;
-        if (jQuery(window).scrollTop() >= sticky) {
-            menu.addClass("sticky");
-        } else {
-            menu.removeClass("sticky");
-        }
-    }
+	
 	jQuery(document).ready(function(){
 		var menu = jQuery("header#masthead");
         if (menu.length) {
