@@ -50,11 +50,9 @@
                         })
                     });
                 </script>
-            <?php else : ?>
-            <div class="our-story-img"><img src="http://sos.com/wp-content/themes/sos/images/bg-story.svg" alt="" /></div>
+            <?php else : $thumbnail = get_thumb(get_the_ID(),'category-thumb'); ?>
+            <div class="our-story-img"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>" class="our-story__des"><?php echo $thumbnail ?></a></div>
             <div class="our-story__content">
-
-                    <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="our-story__img"><?php the_post_thumbnail(array(500, 500)); ?></a>
                     <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>" class="our-story__des">
                         <?php the_title(); ?>
                     </a>

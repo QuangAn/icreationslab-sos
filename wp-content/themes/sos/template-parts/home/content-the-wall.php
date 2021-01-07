@@ -1,6 +1,8 @@
 <?php 
 $args = array(
     'post_type' => array( 'the_wall' ),
+    'meta_key'      => 'show_on_homepage',
+     'meta_value'    => 'yes'
 );
 $walls = new WP_Query( $args );
 if ( $walls->have_posts() ) { ?>
@@ -55,7 +57,7 @@ if ( $walls->have_posts() ) { ?>
                     margin:15
                 },
                 1024:{
-                    margin:40
+                    margin:30
                 }
             }
         })

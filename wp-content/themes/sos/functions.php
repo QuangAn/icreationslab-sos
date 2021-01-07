@@ -323,3 +323,24 @@ function getYoutubeIdFromUrl($url) {
     }
     return false;
 }
+function excerpt($limit,$content) {
+  $excerpt = explode(' ', $content, $limit);
+  if (count($excerpt)>=$limit) {
+    array_pop($excerpt);
+    $excerpt = implode(" ",$excerpt);
+  } else {
+    $excerpt = implode(" ",$excerpt);
+  } 
+  $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+  return $excerpt;
+}
+if ( function_exists( 'add_image_size' ) ) {
+ add_image_size( 'category-thumb', 779, 438, true);
+}
+function get_thumb($post_id,$thumb_type = 'category-thumb'){
+	
+	$thumbnailid = get_post_meta($post_id, '_thumbnail_id', true);
+	$url = wp_get_attachment_image_src($thumbnailid,'category-thumb', true);
+	$thumbnail=$url['0']; 
+	return '<img src="'.$thumbnail.'" />';
+}
