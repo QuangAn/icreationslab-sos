@@ -1276,7 +1276,10 @@ header #quiz-link a:hover {
     width: calc(100% / 3);
     position: relative;
 }
-
+.the-wall-home{
+	max-width: 1170px;
+	margin: 0 auto;
+}
 .the-wall-home .block-content {
     display: flex;
     flex-wrap: wrap;
@@ -1315,7 +1318,7 @@ header #quiz-link a:hover {
 }
 
 .the-wall-home .block-content .the-wall-item .the-wall-bottom {
-    margin-top: 15px;
+    margin-top: 20px;
     text-transform: uppercase;
 }
 
