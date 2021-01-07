@@ -22,17 +22,17 @@ if ( $banner->have_posts() ) { ?>
 		<?php } ?> 
 	</div>
 	</section>
+	<script>
+		jQuery(document).ready(function(){
+			jQuery('.banner .owl-carousel').owlCarousel({
+			    loop: true,
+			    nav: true,
+			    dots:false,
+			    items: 1
+			})
+		})
+	</script>
 <?php } else { 
 	// no posts found 
 }
 ?>
-<script>
-	jQuery(document).ready(function(){
-		jQuery('.banner .owl-carousel').owlCarousel({
-		    loop: true,
-		    nav: true,
-		    dots:false,
-		    items: 1
-		})
-	})
-</script>
