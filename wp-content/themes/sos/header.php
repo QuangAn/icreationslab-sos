@@ -44,9 +44,11 @@
 			    <input type="text" value="" name="s" id="s" placeholder="Search..." />
 			</form>
 		</div>
+		<?php if ( is_home() || is_front_page() ) { ?>
 		<div id="quiz-link">
 			<a href="javascript:void(0)">Quiz</a>
 		</div>
+		<?php } ?>
 	</header><!-- #masthead -->
 <script>
 	function sticky_menu(menu, sticky) {
