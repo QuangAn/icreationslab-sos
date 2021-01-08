@@ -11,7 +11,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="entry-thumbnail">
-		<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="thumbnail__img"><?php the_post_thumbnail('thumbnail'); ?></a>
+		<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="thumbnail__img"><?php echo get_thumb(get_the_ID(),'happening-thumb'); ?></a>
 	</div>
 	<div class="entry-header">
 		<?php the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>

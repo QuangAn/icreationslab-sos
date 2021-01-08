@@ -1,22 +1,18 @@
 <?php 
+$posts_per_page = get_field('posts_per_page',  get_the_ID());
 $args = array(
     'post_type' => array( 'the_wall' ),
-    'meta_key'      => 'show_on_homepage',
-     'meta_value'    => 'yes'
+    'posts_per_page'=> $posts_per_page,
 );
 $walls = new WP_Query( $args );
+$totalwall = $walls->found_posts; 
 if ( $walls->have_posts() ) { ?>
-<div class="the-wall-home">
-    <div class="block-title">
-        <h2>The Wall</h2>
-    </div>
-    <div class="block-content owl-carousel owl-theme">
+<div class="the-wall-home wall-category">
+    <div class="block-content">
             <?php
                 $i = 0;
                 while ( $walls->have_posts() ) {
-                    $i++;
-                    $walls->the_post();
-                    if($i % 2 != 0) echo '<div class="group-item">';
+                    $i++; $walls->the_post();
             ?>
             <div class="the-wall-item">
                 <a href="javascript:void(0)" data-id="<?php the_ID(); ?>" class="the-wall-img"><?php echo get_thumb(get_the_ID(),'wall-thumb'); ?></a>
@@ -30,12 +26,21 @@ if ( $walls->have_posts() ) { ?>
                     </div>
                 </div>
             </div>
-            <?php 
-                if($i % 2 == 0) echo '</div>';
-                }
-            ?> 
+            <?php  } ?> 
        
     </div>
+    <?php if($posts_per_page < $totalwall) : ?>
+    <div id="loading-more" style="display: none;">Loading ...</div>
+    <div class="button" id="load-more">LOAD MORE</div>
+    <script>
+        jQuery(document).ready(function(){
+            post_type = "the_wall";
+            posts_per_page = <?php echo $posts_per_page; ?>;
+            url = "<?php echo admin_url('admin-ajax.php');?>";
+            ajaxLoadPost(url,'#load-more','#loading-more','.wall-category .block-content',post_type,'',posts_per_page)
+        });
+    </script>
+<?php endif; ?>
 </div>
 <div class="loading" id="loading-wall" style="display: none">Loadding...</div>
 <div class="overlay-popup" style="display: none;"></div>
@@ -48,26 +53,6 @@ if ( $walls->have_posts() ) { ?>
     jQuery(document).ready(function(){
         url = "<?php echo admin_url('admin-ajax.php');?>";
         ajaxPopup(".the-wall-img,.the-wall-readmore","the_wall", "#loading-wall",url);
-
-        var owl_wall = jQuery('.the-wall-home .owl-carousel');
-        owl_wall.owlCarousel({
-            loop: true,
-            nav: false,
-            dots:true,
-            items:2,
-            responsive:{
-                0:{
-                    items:1
-                },
-                768:{
-                    items:2,
-                    margin:15
-                },
-                1024:{
-                    margin:30
-                }
-            }
-        })
     })
 </script>
 <?php } else { 

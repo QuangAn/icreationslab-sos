@@ -50,8 +50,8 @@
                         })
                     });
                 </script>
-            <?php else : $thumbnail = get_thumb(get_the_ID(),'category-thumb'); ?>
-            <div class="our-story-img"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>" class="our-story__des"><?php echo $thumbnail ?></a></div>
+            <?php else : ?>
+            <div class="our-story-img"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>" class="our-story__des"><?php echo get_thumb(get_the_ID(),'wall-thumb') ?></a></div>
             <div class="our-story__content">
                     <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>" class="our-story__des">
                         <?php the_title(); ?>

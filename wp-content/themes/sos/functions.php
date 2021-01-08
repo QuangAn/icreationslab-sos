@@ -336,21 +336,59 @@ function excerpt($limit,$content) {
 }
 if ( function_exists( 'add_image_size' ) ) {
  add_image_size( 'category-thumb', 779, 438, true);
+ add_image_size( 'wall-thumb', 820, 560, true);
+ add_image_size( 'happening-thumb', 535, 605, true);
 }
-function get_thumb($post_id,$thumb_type = 'category-thumb'){
+function get_thumb($post_id,$thumb_type){
 	
 	$thumbnailid = get_post_meta($post_id, '_thumbnail_id', true);
-	$url = wp_get_attachment_image_src($thumbnailid,'category-thumb', true);
+	$url = wp_get_attachment_image_src($thumbnailid,$thumb_type, true);
 	$thumbnail=$url['0']; 
 	return '<img src="'.$thumbnail.'" />';
 }
+
+add_action( 'wp_ajax_loadPostPopup', 'loadPostPopup_init' );
+add_action( 'wp_ajax_nopriv_loadPostPopup', 'loadPostPopup_init' );
+function loadPostPopup_init(){
+	ob_start();
+	$postId = (isset($_POST['postId']))?esc_attr($_POST['postId']) : '';
+	$post_type = (isset($_POST['post_type']))?esc_attr($_POST['post_type']) : '';
+	$args = array(
+        'p' => $postId,
+        'post_type'     => $post_type,
+        
+    );
+    $query = new WP_Query($args);
+    $post = $query->get_posts();
+
+?>
+	<div class="the-wall-item">
+	    <a href="javascript:void(0)" class="the-wall-img"><?php echo get_thumb($post[0]->ID,'wall-thumb'); ?></a>
+	    <div class="the-wall__content">
+	        <div class="the-wall-des"><?php echo $post[0]->post_content; ?>
+	        </div>
+	        <div class="the-wall-bottom">
+	            <p><?php echo $post[0]->post_title; ?></p>
+	            <p><?php the_field('occupation',$post[0]->ID); ?></p>
+	        </div>
+	    </div>
+	</div>
+<?php
+    wp_reset_query();
+
+    $result = ob_get_clean(); 
+    wp_send_json_success($result);
+    die();
+
+}
+
 
 add_action( 'wp_ajax_loadpost', 'loadpost_init' );
 add_action( 'wp_ajax_nopriv_loadpost', 'loadpost_init' );
 function loadpost_init() {
  	ob_start();
     $cat_id = (isset($_POST['cat_id']))?esc_attr($_POST['cat_id']) : '';
-    $posts_per_page = (isset($_POST['cat_id']))?esc_attr($_POST['posts_per_page']) : '';
+    $posts_per_page = (isset($_POST['posts_per_page']))?esc_attr($_POST['posts_per_page']) : '';
     $offset = (isset($_POST['offset']))?esc_attr($_POST['offset']) : '';
     $args = array(
         'cat' => $cat_id,
@@ -415,6 +453,98 @@ function loadpost_init() {
     die();
 }
 
+
+
+
+
+
+add_action( 'wp_ajax_loadPostHappening', 'loadPostHappening_init' );
+add_action( 'wp_ajax_nopriv_loadPostHappening', 'loadPostHappening_init' );
+function loadPostHappening_init() {
+ 	ob_start();
+    $cat_id = (isset($_POST['cat_id']))?esc_attr($_POST['cat_id']) : '';
+    $posts_per_page = (isset($_POST['posts_per_page']))?esc_attr($_POST['posts_per_page']) : '';
+    $offset = (isset($_POST['offset']))?esc_attr($_POST['offset']) : '';
+    $args = array(
+        'cat' => $cat_id,
+        'post_type'     => 'post',
+        'posts_per_page'=> $posts_per_page,
+        'offset'	=> $offset,
+        'orderby' 	=>'modified',
+        'order'	=>	'ASC'
+        
+    );
+    $query = new WP_Query($args);
+    if($query->have_posts()):
+        while($query->have_posts()):$query->the_post();
+?>
+	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<div class="entry-thumbnail">
+			<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="thumbnail__img"><?php echo get_thumb(get_the_ID(),'happening-thumb'); ?></a>
+		</div>
+		<div class="entry-header">
+			<?php the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
+		</div><!-- .entry-header -->
+		<div class="entry-meta"><?php sos_posted_on(); ?></div>
+		<div class="entry-content"><?php echo wp_strip_all_tags(get_the_excerpt()); ?></div>
+	</article><!-- #post-<?php the_ID(); ?> -->
+<?php
+        endwhile;
+    endif; wp_reset_query();
+
+    $result = ob_get_clean(); 
+    wp_send_json_success($result);
+    die();
+}
+
+
+
+
+add_action( 'wp_ajax_loadPostWall', 'loadPostWall_init' );
+add_action( 'wp_ajax_nopriv_loadPostWall', 'loadPostWall_init' );
+function loadPostWall_init() {
+ 	ob_start();
+ 	$post_type = (isset($_POST['post_type']))?esc_attr($_POST['post_type']) : '';
+    $posts_per_page = (isset($_POST['posts_per_page']))?esc_attr($_POST['posts_per_page']) : '';
+    $offset = (isset($_POST['offset']))?esc_attr($_POST['offset']) : '';
+    $args = array(
+        'post_type'     => $post_type,
+        'posts_per_page'=> $posts_per_page,
+        'offset'	=> $offset,
+        'orderby' 	=>'modified',
+        'order'	=>	'ASC'
+        
+    );
+    $query = new WP_Query($args);
+    if($query->have_posts()):
+        while($query->have_posts()):$query->the_post();
+        	$post_type = get_field('post_type');
+
+?>
+<div class="the-wall-item">
+    <a href="javascript:void(0)" data-id="<?php the_ID(); ?>" class="the-wall-img"><?php echo get_thumb(get_the_ID(),'wall-thumb'); ?></a>
+    <div class="the-wall__content">
+        <div class="the-wall-des"><?php echo wp_strip_all_tags(get_the_excerpt()); ?>
+        <a href="javascript:void(0)" class="the-wall-readmore"  data-id="<?php the_ID(); ?>">Read More</a>
+        </div>
+        <div class="the-wall-bottom">
+            <p><?php the_title(); ?></p>
+            <p><?php the_field('occupation'); ?></p>
+        </div>
+    </div>
+</div>
+
+<?php
+        endwhile;
+    endif; wp_reset_query();
+
+    $result = ob_get_clean(); 
+    wp_send_json_success($result);
+    die();
+}
+
+
+
 add_action( 'gform_after_submission', 'custom_action_after_apc', 10, 2 );
 function custom_action_after_apc(){
 	add_filter('body_class', 'my_plugin_body_class');
@@ -423,3 +553,4 @@ function my_plugin_body_class($classes) {
     $classes[] = 'gform-success';
     return $classes;
 }
+

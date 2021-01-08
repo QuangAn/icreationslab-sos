@@ -3,6 +3,7 @@
 	Template Name: The Wall
 */
 	get_header();	
+	$description_content = get_field('description_content',  get_the_ID());
 ?>
 <main>
 	<div class="page-header">
@@ -14,7 +15,8 @@
 			<div class="archive-description"><?php the_content(); ?></div>
 		</div>
 	</div><!-- .page-header -->
-	<?php get_template_part('template-parts/home/content','the-wall'); ?>
+	<div class="description_content_category"><?= $description_content ?></div>
+	<?php get_template_part('template-parts/content','the-wall'); ?>
 	<?php get_template_part('template-parts/home/content','share-your-thoughts'); ?>
 </main>
 <?php get_footer(); ?>
