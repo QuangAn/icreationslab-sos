@@ -363,7 +363,7 @@ function loadPostPopup_init(){
 
 ?>
 	<div class="the-wall-item">
-	    <a href="javascript:void(0)" class="the-wall-img"><?php echo get_thumb($post[0]->ID,'wall-thumb'); ?></a>
+	    <a href="javascript:void(0)" class="the-wall-img"><?php echo get_thumb($post[0]->ID,'full'); ?></a>
 	    <div class="the-wall__content">
 	        <div class="the-wall-des"><?php echo $post[0]->post_content; ?>
 	        </div>
@@ -381,6 +381,45 @@ function loadPostPopup_init(){
     die();
 
 }
+
+
+
+
+add_action( 'wp_ajax_loadPostPopupMemories', 'loadPostPopupMemories_init' );
+add_action( 'wp_ajax_nopriv_loadPostPopupMemories', 'loadPostPopupMemories_init' );
+function loadPostPopupMemories_init(){
+	ob_start();
+	$postId = (isset($_POST['postId']))?esc_attr($_POST['postId']) : '';
+	$post_type = (isset($_POST['post_type']))?esc_attr($_POST['post_type']) : '';
+	$args = array(
+        'p' => $postId,
+        'post_type'     => $post_type,
+        
+    );
+    $query = new WP_Query($args);
+    while($query->have_posts()):$query->the_post();
+
+?>
+	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<a href="javascript:void(0)" title="<?php the_title_attribute(); ?>"  class="history_img"><?php the_post_thumbnail('full'); ?></a>
+
+		<div class="entry-header">
+			<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+		</div><!-- .entry-header -->
+
+	</article><!-- #post-<?php the_ID(); ?> -->
+<?php
+	endwhile;
+    wp_reset_query();
+
+    $result = ob_get_clean(); 
+    wp_send_json_success($result);
+    die();
+
+}
+
+
+
 
 
 add_action( 'wp_ajax_loadpost', 'loadpost_init' );

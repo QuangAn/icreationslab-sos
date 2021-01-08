@@ -48,14 +48,20 @@ function ajaxLoadPost(url, buttonId, loadingId, gridClass, post_type, cat_id, po
     });
 }
 
-function ajaxPopup(el,post_type, loadingId, url) {
+function ajaxPopup(el,post_type, loadingId, url,parentEl='#wall-popup', template = '') {
     jQuery( "body" ).on( "click", el, function() {
         var postId = jQuery(this).attr('data-id');
+        var action = "loadPostPopup";
+
+        if(template == 'memories'){
+            action = "loadPostPopupMemories";
+        }
+       
         jQuery.ajax({
             type: "post",
             url: url,
             data: {
-                action: "loadPostPopup",
+                action: action,
                 post_type: post_type,
                 postId: postId,
             },
@@ -69,7 +75,7 @@ function ajaxPopup(el,post_type, loadingId, url) {
                 if (response.success) {
                     if (response.data) {
                         jQuery(loadingId).hide();
-                        jQuery('#wall-popup').addClass('active').find('.popup-content').append(response.data);
+                        jQuery(parentEl).addClass('active').find('.popup-content').append(response.data);
 
                     } else {
                         jQuery(loadingId).hide();
@@ -88,7 +94,7 @@ function ajaxPopup(el,post_type, loadingId, url) {
         return false;
     });
     jQuery('.close-popup,.overlay-popup').click(function(){
-        jQuery('#wall-popup').removeClass('active').find('.popup-content').html('');
+        jQuery(parentEl).removeClass('active').find('.popup-content').html('');
         jQuery('.overlay-popup').hide();
     });
 }

@@ -6,15 +6,13 @@
  *
  * @package aei-legal
  */
-$post_type = get_field('post_type');
-
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="story__img"><?php the_post_thumbnail('thumbnail'); ?></a>
+	<a href="javascript:void(0)" data-id="<?php the_ID(); ?>" title="<?php the_title_attribute(); ?>"  class="history_img"><?php the_post_thumbnail('thumbnail'); ?></a>
 
 	<div class="entry-header">
-		<?php the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
+		<?php the_title( '<h2 class="entry-title"><a data-id="'.get_the_ID().'" href="javascript:void(0)" class="history_link" rel="bookmark">', '</a></h2>' ); ?>
 	</div><!-- .entry-header -->
 
 </article><!-- #post-<?php the_ID(); ?> -->

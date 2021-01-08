@@ -64,6 +64,7 @@ get_header();
 					}
 					if($template == 'memories'){
 						get_template_part('template-parts/content','memories');
+
 					}
 					if($template == 'happening'){
 						get_template_part('template-parts/content','happening');
@@ -100,9 +101,25 @@ get_header();
 				ajaxLoadPost(url,'#load-more','#loading-more','.template-grid',post_type,cat_id,posts_per_page,template)
 			});
 		</script>
+		
 		<?php endif; ?>
 	</main><!-- #main -->
+<?php if($template == 'memories'){ ?>
+		<div class="loading" id="loading-memory" style="display: none">Loadding...</div>
+		<div class="overlay-popup" style="display: none;"></div>
+		<div id="memory-popup" class="popup-custom">
+		    <div class="close-popup"><span>X</span>&nbsp;&nbsp;<span>CLOSE</span></div>
+		    <div class="popup-content"></div>
+		</div>
+		<script>
 
+		    jQuery(document).ready(function(){
+		        url = "<?php echo admin_url('admin-ajax.php');?>";
+		        template = "<?php echo $template; ?>";
+		        ajaxPopup(".history_link,.history_img","post", "#loading-memory",url,'#memory-popup',template);
+		    })
+		</script>
+		<?php } ?>
 <?php
 
 get_footer();

@@ -2156,8 +2156,8 @@ footer .copy-right a {
 
 .popup-custom.active {
     width: 768px;
-    height: 90%;
-
+    height: auto;
+    max-height: 90%;
     padding: 15px;
     position: fixed;
     visibility: visible;
@@ -2250,6 +2250,22 @@ footer .copy-right a {
 .template-grid-3.grid-default article .entry-content {
     margin-top: 15px;
     text-align: center;
+}
+#memory-popup {
+    background: #fff;
+    border-radius: 5px;
+    height: auto;
+}
+#memory-popup .entry-header {
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+#memory-popup .entry-header h2 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: normal;
 }
 
 @media only screen and (max-width: 1024px) {
