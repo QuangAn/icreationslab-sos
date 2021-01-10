@@ -1515,6 +1515,7 @@ header #quiz-link a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10;
 }
 
 .youtube-video.active .overlay-youtube {
@@ -1589,8 +1590,10 @@ header #quiz-link a:hover {
 .quiz .block-content .process-bar #process-bar__current {
     position: absolute;
     left: 0;
+    width: 0;
     height: 4px;
     background: #40b4e7;
+    transition: .3s all;
 }
 
 .quiz .block-content .quiz-content {
@@ -1980,6 +1983,10 @@ footer .copy-right a {
         width: calc(100% - 30px) !important;
     }
 
+    header #top-search input#s {
+        right: 50%;
+        transform: translateX(50%);
+    }
 }
 
 @media only screen and (max-width: 640px) {

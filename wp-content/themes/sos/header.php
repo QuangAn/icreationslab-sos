@@ -50,34 +50,3 @@
 		</div>
 		<?php } ?>
 	</header><!-- #masthead -->
-<script>
-	
-	jQuery(document).ready(function(){
-		var menu = jQuery("header#masthead");
-        if (menu.length) {
-            var sticky = menu.offset().top + 1;
-            sticky_menu(menu, sticky);
-            jQuery(window).on('scroll', function() {
-                sticky_menu(menu, sticky);
-            });
-        }
-
-		jQuery('#searchsubmit').click(function(){
-			jQuery('#searchform input#s').toggleClass('active');
-
-		});
-		jQuery('#searchform input#s').blur(function(){
-			jQuery(this).removeClass('active');
-		});
-
-		jQuery('#menu-toggle').click(function(){
-			jQuery('#site-navigation').toggleClass('toggled');
-		})
-
-		jQuery('#quiz-link').click(function(){
-			jQuery('html, body').animate({
-                    scrollTop: jQuery(".quiz").offset().top
-            }, 500);
-		});
-	});
-</script>

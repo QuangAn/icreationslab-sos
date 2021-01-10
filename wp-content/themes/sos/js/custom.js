@@ -1,12 +1,12 @@
-function ajaxLoadPost(url, buttonId, loadingId, gridClass, post_type, cat_id, posts_per_page,template = '') {
+function ajaxLoadPost(url, buttonId, loadingId, gridClass, post_type, cat_id, posts_per_page, template = '') {
     var i = 0;
     jQuery(buttonId).click(function() {
         i++;
         var action = "loadpost";
-        if(post_type == 'the_wall'){
+        if (post_type == 'the_wall') {
             action = "loadPostWall";
         }
-        if(template == 'happening'){
+        if (template == 'happening') {
             action = "loadPostHappening";
         }
         jQuery.ajax({
@@ -48,15 +48,15 @@ function ajaxLoadPost(url, buttonId, loadingId, gridClass, post_type, cat_id, po
     });
 }
 
-function ajaxPopup(el,post_type, loadingId, url,parentEl='#wall-popup', template = '') {
-    jQuery( "body" ).on( "click", el, function() {
+function ajaxPopup(el, post_type, loadingId, url, parentEl = '#wall-popup', template = '') {
+    jQuery("body").on("click", el, function() {
         var postId = jQuery(this).attr('data-id');
         var action = "loadPostPopup";
 
-        if(template == 'memories'){
+        if (template == 'memories') {
             action = "loadPostPopupMemories";
         }
-       
+
         jQuery.ajax({
             type: "post",
             url: url,
@@ -93,7 +93,7 @@ function ajaxPopup(el,post_type, loadingId, url,parentEl='#wall-popup', template
         });
         return false;
     });
-    jQuery('.close-popup,.overlay-popup').click(function(){
+    jQuery('.close-popup,.overlay-popup').click(function() {
         jQuery(parentEl).removeClass('active').find('.popup-content').html('');
         jQuery('.overlay-popup').hide();
     });
@@ -107,3 +107,39 @@ function sticky_menu(menu, sticky) {
         menu.removeClass("sticky");
     }
 }
+
+
+
+jQuery(document).ready(function() {
+    var menu = jQuery("header#masthead");
+    if (menu.length) {
+        var sticky = menu.offset().top + 1;
+        sticky_menu(menu, sticky);
+        jQuery(window).on('scroll', function() {
+            sticky_menu(menu, sticky);
+        });
+    }
+
+    jQuery('#searchsubmit').click(function() {
+        jQuery('#searchform input#s').toggleClass('active');
+
+    });
+    jQuery('body').click(function(e) {
+        if (jQuery(e.target).closest("#searchform input#s,#searchsubmit").length === 0)
+            jQuery('#searchform input#s').removeClass('active');
+
+    });
+    jQuery('#searchform input#s').blur(function() {
+        jQuery(this).removeClass('active');
+    });
+
+    jQuery('#menu-toggle').click(function() {
+        jQuery('#site-navigation').toggleClass('toggled');
+    })
+
+    jQuery('#quiz-link').click(function() {
+        jQuery('html, body').animate({
+            scrollTop: jQuery(".quiz").offset().top
+        }, 500);
+    });
+});
