@@ -137,6 +137,17 @@ function sos_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Search Sidebar', 'sos' ),
+			'id'            => 'sidebar-2',
+			'description'   => esc_html__( 'Add widgets here.', 'sos' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
 }
 add_action( 'widgets_init', 'sos_widgets_init' );
 
@@ -401,7 +412,7 @@ function loadPostPopupMemories_init(){
 
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<a href="javascript:void(0)" title="<?php the_title_attribute(); ?>"  class="history_img"><?php the_post_thumbnail('full'); ?></a>
+		<a href="javascript:void(0)" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('full'); ?></a>
 
 		<div class="entry-header">
 			<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>

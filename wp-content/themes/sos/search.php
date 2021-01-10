@@ -13,16 +13,18 @@ get_header();
 	<main id="primary" class="site-main">
 
 		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'sos' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
-
+			<?php 
+				global $wp_query;
+				$count = $wp_query->found_posts;
+			   $not_singular = $count > 1 ? $count.' results' : $count.' result';
+			?>
+			<div class="page-header">
+				<div class="feature_image_category">
+					<?php dynamic_sidebar('sidebar-2') ?>
+				</div>
+				
+			</div><!-- .page-header -->
+			<div class="description_content_search"><?= $not_singular." found for '".get_search_query()."'" ?></div>
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
@@ -37,7 +39,7 @@ get_header();
 
 			endwhile;
 
-			the_posts_navigation();
+			wp_pagenavi();
 
 		else :
 
