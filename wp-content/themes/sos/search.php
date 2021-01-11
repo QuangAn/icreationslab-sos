@@ -27,6 +27,7 @@ get_header();
 			<div class="description_content_search"><?= $not_singular." found for '".get_search_query()."'" ?></div>
 			<?php
 			/* Start the Loop */
+			echo '<div class="collection-search">';
 			while ( have_posts() ) :
 				the_post();
 
@@ -38,7 +39,7 @@ get_header();
 				get_template_part( 'template-parts/content', 'search' );
 
 			endwhile;
-
+			echo '</div>';
 			wp_pagenavi();
 
 		else :
