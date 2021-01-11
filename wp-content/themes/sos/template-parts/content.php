@@ -18,5 +18,5 @@
 	<div class="entry-thumbnail">
 		<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="thumbnail__img"><?php the_post_thumbnail('full'); ?></a>
 	</div>
-	<div class="entry-content"><?php echo wp_strip_all_tags(get_the_excerpt()); ?></div>
+	<div class="entry-content"><?php the_content(); ?></div>
 </article><!-- #post-<?php the_ID(); ?> -->

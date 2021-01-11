@@ -1,22 +1,12 @@
 <?php
-/**
- * The template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package aei-legal
- */
-
+/*
+	Template Name: Page Full
+*/
 get_header();
 $description_content = get_field('description_content',  get_the_ID());
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main page-full">
 		<div class="page-header <?php if(!get_the_post_thumbnail()) echo 'not-feature-image' ?>">
 			<?php if(get_the_post_thumbnail()) { ?>
 			<div class="feature_image_category">

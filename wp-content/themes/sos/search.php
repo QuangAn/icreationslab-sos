@@ -18,7 +18,7 @@ get_header();
 				$count = $wp_query->found_posts;
 			   $not_singular = $count > 1 ? $count.' results' : $count.' result';
 			?>
-			<div class="page-header">
+			<div class="page-header <?php if(!get_the_post_thumbnail()) echo 'not-feature-image' ?>">
 				<div class="feature_image_category">
 					<?php dynamic_sidebar('sidebar-2') ?>
 				</div>

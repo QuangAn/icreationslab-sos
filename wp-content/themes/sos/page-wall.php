@@ -5,8 +5,8 @@
 	get_header();	
 	$description_content = get_field('description_content',  get_the_ID());
 ?>
-<main>
-	<div class="page-header">
+<main class="page-wall page-full">
+	<div class="page-header <?php if(!get_the_post_thumbnail()) echo 'not-feature-image' ?>">
 		<div class="feature_image_category">
 			<?php the_post_thumbnail( 'full' ); ?>
 		</div>

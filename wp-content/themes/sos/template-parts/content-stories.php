@@ -12,11 +12,16 @@ $post_type = get_field('post_type');
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
+        $thumbnail = get_thumb(get_the_ID(),'category-thumb');
 		if($post_type == 'video') {
 			$youtube_link = get_field('youtube_link');
             $youtube_id = getYoutubeIdFromUrl($youtube_link); 
 	 ?>
-	 <div class="our-story-img youtube-thumb"><img src="https://i1.ytimg.com/vi/<?php echo $youtube_id; ?>/maxresdefault.jpg" alt="" /></div>
+	 <div class="our-story-img youtube-thumb">
+        <?php if($thumbnail) echo $thumbnail; else{  ?>
+        <img src="https://i1.ytimg.com/vi/<?php echo $youtube_id; ?>/maxresdefault.jpg" alt="" />
+        <?php } ?>
+    </div>
 	<div class="youtube-video">
         <div class="iframe-youtube">
             <div class="close-youtube"><span>X</span>&nbsp;&nbsp;<span>CLOSE</span></div>
@@ -38,10 +43,7 @@ $post_type = get_field('post_type');
             })
         });
     </script>
-    <?php 
-	}else{
-		$thumbnail = get_thumb(get_the_ID(),'category-thumb');
-	 ?>
+    <?php }else{ ?>
 		<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="story__img"><?php echo $thumbnail; ?></a>
 	<?php } ?>
 	<div class="entry-header">
