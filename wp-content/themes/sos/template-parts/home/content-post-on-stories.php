@@ -1,13 +1,44 @@
 <?php
 	$cat_id = '3';
-    $args = array(
+    $args_video = array(
         'cat' => $cat_id,
         'post_type'     => 'post',
-        'posts_per_page'=> 6,
-        'meta_key'      => 'show_on_homepage',
-        'meta_value'    => 'yes'
+        'posts_per_page'=> 3,
+        'meta_query' => array(
+            array(
+                'key' => 'show_on_homepage',
+                'value' => 'yes',
+                'compare' => 'LIKE'
+            ),
+            array(
+                'key' => 'post_type',
+                'value' => 'video',
+                'compare' => 'LIKE'
+            )
+        )
     );
-	$query = new WP_Query( $args );
+    $args_article = array(
+        'cat' => $cat_id,
+        'post_type'     => 'post',
+        'posts_per_page'=> 3,
+        'meta_query' => array(
+            array(
+                'key' => 'show_on_homepage',
+                'value' => 'yes',
+                'compare' => 'LIKE'
+            ),
+            array(
+                'key' => 'post_type',
+                'value' => 'article',
+                'compare' => 'LIKE'
+            )
+        )
+    );
+	$query_video = new WP_Query( $args_video );
+    $query = new WP_Query( $args_article );
+    $videos = $query_video->get_posts();
+    $articles = $query->get_posts();
+    $posts = arrayNested($videos,$articles);
 	$cat_name = get_cat_name($cat_id);
 	$i=1;
 ?>
@@ -19,20 +50,20 @@
     </div>
     <div class="block-content">
     	<?php 
-        while ( $query->have_posts() ) : $query->the_post();
+        foreach($posts as $post) :
             $i++; 
             $post_type = get_field('post_type');
         ?>
         <div class="our-story">
             <?php 
-             $thumbnail = get_thumb(get_the_ID(),'wall-thumb');
+             $thumbnail = get_thumb($post->ID,'wall-thumb');
             if($post_type == 'video') : 
                 $youtube_link = get_field('youtube_link');
                 $youtube_id = getYoutubeIdFromUrl($youtube_link);
                
             ?>
                 <div class="our-story-img youtube-thumb">
-                    <?php if(has_post_thumbnail()) echo $thumbnail; else{   ?>
+                    <?php if(has_post_thumbnail($post->ID)) echo $thumbnail; else{   ?>
                     <img src="https://i1.ytimg.com/vi/<?php echo $youtube_id; ?>/maxresdefault.jpg" alt="" />
                     <?php } ?>
                 </div>
@@ -66,7 +97,7 @@
             </div>
             <?php endif; ?>
         </div>
-       	<?php endwhile; 
+       	<?php endforeach; 
 		wp_reset_postdata(); ?>
     </div>
 </div>

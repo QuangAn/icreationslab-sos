@@ -615,3 +615,15 @@ function my_plugin_body_class($classes) {
     return $classes;
 }
 
+function arrayNested($arr_a,$arr_b) {
+    $c=[];
+    for ($i = 0; $i <= count($arr_a); $i++){
+        if (isset($arr_a[$i])) {
+            $c[] = $arr_a[$i];
+        }
+        if (isset($arr_b[$i])) {
+            $c[] = $arr_b[$i];
+        }
+    }
+    return $c;
+}
