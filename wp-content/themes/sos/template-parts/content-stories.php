@@ -15,10 +15,10 @@ $post_type = get_field('post_type');
         $thumbnail = get_thumb(get_the_ID(),'category-thumb');
 		if($post_type == 'video') {
 			$youtube_link = get_field('youtube_link');
-            $youtube_id = getYoutubeIdFromUrl($youtube_link); 
+            $youtube_id = getYoutubeIdFromUrl($youtube_link); ;
 	 ?>
 	 <div class="our-story-img youtube-thumb">
-        <?php if($thumbnail) echo $thumbnail; else{  ?>
+        <?php if(has_post_thumbnail()) echo $thumbnail; else{  ?>
         <img src="https://i1.ytimg.com/vi/<?php echo $youtube_id; ?>/maxresdefault.jpg" alt="" />
         <?php } ?>
     </div>
@@ -30,10 +30,17 @@ $post_type = get_field('post_type');
         </div>
         <div class="overlay-youtube"></div>
     </div>
+    
+    <div class="entry-header">
+        <?php the_title( '<h2 class="entry-title"><a class="youtube-link" href="javascript:void(0)" rel="bookmark">', '</a></h2>' ); ?>
+    </div><!-- .entry-header -->
     <script>
         jQuery(document).ready(function(){
             jQuery('.youtube-thumb').click(function(){
                 jQuery(this).next().addClass('active');
+            });
+            jQuery('.youtube-link').click(function(){
+                jQuery(this).parent().parent().prev().addClass('active');
             });
             jQuery('.overlay-youtube').click(function(){
                 jQuery(this).parent().removeClass('active');
@@ -45,9 +52,8 @@ $post_type = get_field('post_type');
     </script>
     <?php }else{ ?>
 		<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="story__img"><?php echo $thumbnail; ?></a>
+        <div class="entry-header">
+            <?php the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
+        </div><!-- .entry-header -->
 	<?php } ?>
-	<div class="entry-header">
-		<?php the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
-	</div><!-- .entry-header -->
-
 </article><!-- #post-<?php the_ID(); ?> -->

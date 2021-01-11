@@ -1280,7 +1280,7 @@ header #quiz-link a:hover {
 .our-stories-home .block-content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+
 }
 
 .our-stories-home .block-content .our-story {

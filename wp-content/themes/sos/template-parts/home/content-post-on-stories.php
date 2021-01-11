@@ -28,11 +28,11 @@
              $thumbnail = get_thumb(get_the_ID(),'wall-thumb');
             if($post_type == 'video') : 
                 $youtube_link = get_field('youtube_link');
-                $youtube_id = getYoutubeIdFromUrl($youtube_link); 
+                $youtube_id = getYoutubeIdFromUrl($youtube_link);
                
             ?>
                 <div class="our-story-img youtube-thumb">
-                    <?php if($thumbnail) echo $thumbnail; else{  ?>
+                    <?php if(has_post_thumbnail()) echo $thumbnail; else{   ?>
                     <img src="https://i1.ytimg.com/vi/<?php echo $youtube_id; ?>/maxresdefault.jpg" alt="" />
                     <?php } ?>
                 </div>
