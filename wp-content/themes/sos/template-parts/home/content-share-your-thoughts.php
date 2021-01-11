@@ -24,7 +24,7 @@
         <h2>Share Your Thoughts</h2>
     </div>
     <div class="block-content">
-        <form name="create_wall" action="<?php echo home_url(); ?>" method="POST">
+        <form name="create_wall" action="./" method="POST">
             <div class="control input">
                 <input type="text" name="post_title" placeholder="Name" required />
             </div>

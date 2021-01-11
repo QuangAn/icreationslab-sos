@@ -5,6 +5,7 @@ $args = array(
      'meta_value'    => 'yes'
 );
 $walls = new WP_Query( $args );
+$totalwall = $walls->found_posts; 
 if ( $walls->have_posts() ) { ?>
 <div class="the-wall-home">
     <div class="block-title">
@@ -31,7 +32,7 @@ if ( $walls->have_posts() ) { ?>
                 </div>
             </div>
             <?php 
-                if($i % 2 == 0) echo '</div>';
+                if($i % 2 == 0 || $totalwall == $i) echo '</div>';
                 }
             ?> 
        
