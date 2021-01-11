@@ -2023,7 +2023,9 @@ footer .copy-right a {
     body .block-about-3 .block-about-3__bottom ul li .author-name span.cv {
         font-size: 12px;
     }
-
+    body.category .template-grid-3 article{
+        width: 100% !important;margin:0 0 15px 0 !important;
+    }
 }
 
 @media only screen and (max-width: 640px) {

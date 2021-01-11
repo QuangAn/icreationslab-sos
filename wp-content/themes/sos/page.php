@@ -13,10 +13,19 @@
  */
 
 get_header();
+$description_content = get_field('description_content',  get_the_ID());
 ?>
 
 	<main id="primary" class="site-main">
-
+		<div class="page-header">
+			<div class="feature_image_category">
+				<?php the_post_thumbnail( 'full' ); ?>
+			</div>
+			<div class="box-des-category">
+				<?php the_title( '<h1 class="page-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' ); ?>
+				<div class="archive-description"><?= $description_content ?></div>
+			</div>
+		</div><!-- .page-header -->
 		<?php
 		while ( have_posts() ) :
 			the_post();
