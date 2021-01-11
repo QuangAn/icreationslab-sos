@@ -1029,6 +1029,7 @@ h4,
 h5,
 h6 {
     font-family: AveriaSerifLibre-Regular, cursive;
+    font-weight: normal;
 }
 
 .transition__link {
@@ -1849,6 +1850,12 @@ footer .copy-right a {
         align-items: center;
     }
 
+    .sigle-main-content #primary .entry-title a {
+        line-height: 47px;
+        margin-bottom: 10px;
+        display: block;
+    }
+
     .the-wall-home {
         padding: 0 8%;
     }
@@ -1883,7 +1890,12 @@ footer .copy-right a {
     .page main:not(.page-full) {
         padding: 50px 15px
     }
-
+    .sigle-main-content #primary .entry-title a {
+        line-height: 40px;
+        font-size: 35px;
+        margin-bottom: 10px;
+        display: block;
+    }
     header {
         flex-wrap: wrap;
 
@@ -2379,7 +2391,6 @@ footer .copy-right a {
 
 .sigle-main-content #primary .entry-title a {
     text-decoration: none;
-    font-size: 42px;
     color: #3e82c3;
 }
 
@@ -2946,9 +2957,11 @@ body.search .description_content_search {
         padding: 15px;
         padding-bottom: 30px;
     }
-    body .block-about-3 .block-about-3__top{
+
+    body .block-about-3 .block-about-3__top {
         padding: 0 15px;
     }
+
     body .block-about h2 {
         font-size: 35px !important;
         line-height: 50px;
@@ -2970,13 +2983,15 @@ body.search .description_content_search {
         margin-bottom: 10px;
         text-align: center;
     }
-    .block-about-3 .block-about-3__bottom ul li .author-name{
-            margin: 15px 0 15px -2vw;
+
+    .block-about-3 .block-about-3__bottom ul li .author-name {
+        margin: 15px 0 15px -2vw;
     }
+
     .block-about-3 .block-about-3__bottom ul li .author-name span.name {
-    font-size: 1.8vw;
-    line-height: 2vw;
-}
+        font-size: 1.8vw;
+        line-height: 2vw;
+    }
 
 }
 
@@ -2994,8 +3009,9 @@ body.search .description_content_search {
         width: 100% !important;
         margin-right: 0 !important;
     }
-    body .page-full .block-about-3 .block-about-3__bottom ul li .author-name{
+
+    body .page-full .block-about-3 .block-about-3__bottom ul li .author-name {
         padding: 0 20px;
     }
-   
+
 }
