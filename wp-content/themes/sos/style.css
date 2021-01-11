@@ -2033,6 +2033,7 @@ footer .copy-right a {
 
     body .block-about-3 .block-about-3__bottom ul li .author-name span.name {
         font-size: 16px;
+        line-height: 18px;
     }
 
     body .block-about-3 .block-about-3__bottom ul li .author-name span.cv {
@@ -2175,9 +2176,11 @@ footer .copy-right a {
 .single .page-header .box-des-category p {
     margin: 0;
 }
-.archive main{
+
+.archive main {
     margin-bottom: 80px;
 }
+
 #load-more {
     width: 160px;
     height: 50px;
@@ -2418,18 +2421,22 @@ footer .copy-right a {
 .sigle-main-content #primary .entry-thumbnail {
     margin-top: 25px;
 }
+
 .single .entry-thumbnail {
     margin-bottom: 25px;
 }
+
 .single p {
     line-height: 28px;
 }
+
 .single .entry-content h2,
 .single .entry-content h3,
 .single .entry-content h4,
 .single .entry-content h5 {
     text-transform: uppercase;
 }
+
 .single .entry-content h2 {
     font-size: 24px;
     margin-top: 35px;
@@ -2776,15 +2783,18 @@ body.search .description_content_search {
     color: #000 !important;
 }
 
-.page-wall .share-your-thoughts{
+.page-wall .share-your-thoughts {
     margin-bottom: 80px;
 }
+
 .template-grid-2 article {
     margin-bottom: 25px;
 }
+
 .template-grid-2 article a {
     display: flex;
 }
+
 .template-grid-2 article h2.entry-title {
     display: flex;
     justify-content: center;
@@ -2936,7 +2946,9 @@ body.search .description_content_search {
         padding: 15px;
         padding-bottom: 30px;
     }
-
+    body .block-about-3 .block-about-3__top{
+        padding: 0 15px;
+    }
     body .block-about h2 {
         font-size: 35px !important;
         line-height: 50px;
@@ -2958,13 +2970,32 @@ body.search .description_content_search {
         margin-bottom: 10px;
         text-align: center;
     }
+    .block-about-3 .block-about-3__bottom ul li .author-name{
+            margin: 15px 0 15px -2vw;
+    }
+    .block-about-3 .block-about-3__bottom ul li .author-name span.name {
+    font-size: 1.8vw;
+    line-height: 2vw;
+}
 
 }
 
 @media only screen and (max-width: 600px) {
+
     .wall-category .block-content .the-wall-item,
-    body.category .template-grid-2 article{
+    body.category .template-grid-2 article {
         width: 100% !important;
-        margin:0 0 15px 0 !important;
+        margin: 0 0 15px 0 !important;
     }
+}
+
+@media only screen and (max-width: 500px) {
+    body .page-full .block-about-3 .block-about-3__bottom ul li {
+        width: 100% !important;
+        margin-right: 0 !important;
+    }
+    body .page-full .block-about-3 .block-about-3__bottom ul li .author-name{
+        padding: 0 20px;
+    }
+   
 }
