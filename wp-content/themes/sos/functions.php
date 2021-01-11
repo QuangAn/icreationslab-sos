@@ -496,7 +496,7 @@ function loadpost_init() {
     </script>
     <?php 
 	}else{
-		$thumbnail = get_thumb(get_the_ID(),'category-thumb');
+		$thumbnail = the_post_thumbnail('thumbnail');
 	 ?>
 		<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="story__img"><?php echo $thumbnail; ?></a>
 	<?php } ?>
