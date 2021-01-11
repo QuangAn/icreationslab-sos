@@ -496,7 +496,8 @@ function loadpost_init() {
     </script>
     <?php 
 	}else{
-		$thumbnail = the_post_thumbnail('thumbnail');
+		if($cat_id == '5') $thumbnail = the_post_thumbnail('thumbnail');
+		else $thumbnail = the_post_thumbnail('category-thumb');
 	 ?>
 		<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="story__img"><?php echo $thumbnail; ?></a>
 	<?php } ?>
