@@ -33,7 +33,7 @@ get_header();
 
 		<?php if ( $query->have_posts() ) : ?>
 
-			<div class="page-header <?php if(!get_the_post_thumbnail()) echo 'not-feature-image' ?>">
+			<div class="page-header <?php if(!$image) echo 'not-feature-image' ?>">
 				<div class="feature_image_category">
 					<img src="<?php echo $image['url']; ?>" alt="" />
 				</div>

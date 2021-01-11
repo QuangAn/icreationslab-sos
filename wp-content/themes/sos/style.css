@@ -1741,6 +1741,7 @@ footer.footer-content .social-footer .social-title {
 
 footer.footer-content .social-footer .social-footer__content {
     display: flex;
+    justify-content: center;
 }
 
 footer.footer-content .social-footer .social-footer__content a {
@@ -1782,21 +1783,33 @@ footer.footer-content .social-footer .social-footer__content a:last-child:before
     background: url('images/icons/instagram.png');
 }
 
-#footer-navigation {
+footer.footer-content .widget {
+    margin-bottom: 0;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+footer.footer-content .textwidget {
+    width: 100%;
+}
+
+.menu-footer-menu-container {
     margin: 30px 0 5px;
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-#footer-navigation ul {
+.menu-footer-menu-container ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-#footer-navigation ul li a {
+.menu-footer-menu-container ul li a {
     text-decoration: none;
     color: #fff;
     text-transform: uppercase;
@@ -1890,12 +1903,14 @@ footer .copy-right a {
     .page main:not(.page-full) {
         padding: 50px 15px
     }
+
     .sigle-main-content #primary .entry-title a {
         line-height: 40px;
         font-size: 35px;
         margin-bottom: 10px;
         display: block;
     }
+
     header {
         flex-wrap: wrap;
 
@@ -2063,16 +2078,21 @@ footer .copy-right a {
         padding: 0 15px;
     }
 
-    #footer-navigation ul li a {
-        padding: 10px;
+    .menu-footer-menu-container ul {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .menu-footer-menu-container ul li a {
+        padding: 3px;
 
     }
 
 }
 
 @media only screen and (max-width: 500px) {
-    #footer-navigation ul li a {
-        font-size: 2.4vw;
+    .menu-footer-menu-container ul li a {
+        font-size: 2.5vw;
     }
 
     footer.footer-content .social-footer {
