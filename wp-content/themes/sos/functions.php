@@ -520,7 +520,18 @@ function loadpost_init() {
 			$youtube_link = get_field('youtube_link');
             $youtube_id = getYoutubeIdFromUrl($youtube_link); 
 	 ?>
-	 <div class="our-story-img youtube-thumb"><img src="https://i1.ytimg.com/vi/<?php echo $youtube_id; ?>/maxresdefault.jpg" alt="" /></div>
+	<div class="our-story-img youtube-thumb">
+        <a href="javascript:void(0)" title="<?php the_title_attribute(); ?>"  class="story__img">
+        <?php if(has_post_thumbnail(get_the_ID())){  ?>
+            <?php 
+            	$thumbnail = get_the_post_thumbnail(get_the_ID(),'category-thumb');
+            	echo $thumbnail; 
+            ?>
+        <?php }else{  ?>
+        <img src="https://i1.ytimg.com/vi/<?php echo $youtube_id; ?>/maxresdefault.jpg" alt="" />
+        <?php } ?>
+        </a>
+    </div>
 	<div class="youtube-video">
         <div class="iframe-youtube">
             <div class="close-youtube"><span>X</span>&nbsp;&nbsp;<span>CLOSE</span></div>
@@ -529,10 +540,17 @@ function loadpost_init() {
         </div>
         <div class="overlay-youtube"></div>
     </div>
-    <script>
+   
+    <div class="entry-header">
+        <?php the_title( '<h2 class="entry-title"><a class="youtube-link" href="javascript:void(0)" rel="bookmark">', '</a></h2>' ); ?>
+    </div><!-- .entry-header -->
+     <script>
         jQuery(document).ready(function(){
             jQuery('.youtube-thumb').click(function(){
                 jQuery(this).next().addClass('active');
+            });
+            jQuery('.entry-header').click(function(){
+                jQuery(this).prev().addClass('active');
             });
             jQuery('.overlay-youtube').click(function(){
                 jQuery(this).parent().removeClass('active');
@@ -545,13 +563,14 @@ function loadpost_init() {
     <?php 
 	}else{
 		if($cat_id == '5') $thumbnail = the_post_thumbnail('thumbnail');
-		else $thumbnail = the_post_thumbnail('category-thumb');
+		else $thumbnail = get_the_post_thumbnail(get_the_ID(),'category-thumb');
 	 ?>
 		<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="story__img"><?php echo $thumbnail; ?></a>
+		<div class="entry-header">
+			<?php the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
+		</div><!-- .entry-header -->
 	<?php } ?>
-	<div class="entry-header">
-		<?php the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
-	</div><!-- .entry-header -->
+	
 
 </article>
 <?php
