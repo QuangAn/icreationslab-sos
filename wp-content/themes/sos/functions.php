@@ -444,6 +444,54 @@ function loadPostPopupMemories_init(){
 
 
 
+
+
+add_action( 'wp_ajax_loadpostMemories', 'loadpostMemories_init' );
+add_action( 'wp_ajax_nopriv_loadpostMemories', 'loadpostMemories_init' );
+function loadpostMemories_init() {
+ 	ob_start();
+    $cat_id = (isset($_POST['cat_id']))?esc_attr($_POST['cat_id']) : '';
+    $posts_per_page = (isset($_POST['posts_per_page']))?esc_attr($_POST['posts_per_page']) : '';
+    $offset = (isset($_POST['offset']))?esc_attr($_POST['offset']) : '';
+    $args = array(
+        'cat' => $cat_id,
+        'post_type'     => 'post',
+        'posts_per_page'=> $posts_per_page,
+        'offset'	=> $offset,
+        'orderby' 	=>'modified',
+        'order'	=>	'ASC'
+        
+    );
+    $query = new WP_Query($args);
+    if($query->have_posts()):
+        while($query->have_posts()):$query->the_post();
+        	$post_type = get_field('post_type');
+
+?>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<a href="javascript:void(0)" data-id="<?php the_ID(); ?>" title="<?php the_title_attribute(); ?>"  class="history_img"><?php the_post_thumbnail('thumbnail'); ?></a>
+
+	<div class="entry-header">
+		<?php the_title( '<h2 class="entry-title"><a data-id="'.get_the_ID().'" href="javascript:void(0)" class="history_link" rel="bookmark">', '</a></h2>' ); ?>
+	</div><!-- .entry-header -->
+
+</article><!-- #post-<?php the_ID(); ?> -->
+<?php
+        endwhile;
+    endif; wp_reset_query();
+
+    $result = ob_get_clean(); 
+    wp_send_json_success($result);
+    die();
+}
+
+
+
+
+
+
+
+
 add_action( 'wp_ajax_loadpost', 'loadpost_init' );
 add_action( 'wp_ajax_nopriv_loadpost', 'loadpost_init' );
 function loadpost_init() {
@@ -584,10 +632,10 @@ function loadPostWall_init() {
 
 ?>
 <div class="the-wall-item">
-    <a href="javascript:void(0)" data-id="<?php the_ID(); ?>" class="the-wall-img-popup"><?php echo get_thumb(get_the_ID(),'wall-thumb'); ?></a>
+    <a href="javascript:void(0)" data-id="<?php the_ID(); ?>" class="the-wall-img"><?php echo get_thumb(get_the_ID(),'wall-thumb'); ?></a>
     <div class="the-wall__content">
         <div class="the-wall-des"><?php echo wp_strip_all_tags(get_the_excerpt()); ?>
-        <a href="javascript:void(0)" class="the-wall-readmore"  data-id="<?php the_ID(); ?>">Read More</a>
+        <a href="javascript:void(0)" class="the-wall-readmore" data-id="<?php the_ID(); ?>">Read More</a>
         </div>
         <div class="the-wall-bottom">
             <p><?php the_title(); ?></p>

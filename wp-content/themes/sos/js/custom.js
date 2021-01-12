@@ -9,6 +9,9 @@ function ajaxLoadPost(url, buttonId, loadingId, gridClass, post_type, cat_id, po
         if (template == 'happening') {
             action = "loadPostHappening";
         }
+        if (template == 'memories') {
+            action = "loadpostMemories";
+        }
         jQuery.ajax({
             type: "post",
             url: url,
