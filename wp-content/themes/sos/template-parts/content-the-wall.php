@@ -59,7 +59,7 @@ if ( $walls->have_posts() ) { ?>
 
     jQuery(document).ready(function(){
         url = "<?php echo admin_url('admin-ajax.php');?>";
-        ajaxPopup(".the-wall-img,.the-wall-readmore","the_wall", "#loading-wall",url);
+        ajaxPopup(".the-wall-img,.the-wall-readmore","the_wall", "#loading-wall",url,'#popup-wall');
     })
 </script>
 <?php } else { 

@@ -2278,7 +2278,7 @@ footer .copy-right a {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 6;
+    z-index: 10;
     color: #fff;
     text-transform: uppercase;
 }
@@ -2291,7 +2291,7 @@ footer .copy-right a {
     right: 0;
     background: #000;
     opacity: 0.7;
-    z-index: 2;
+    z-index: 9;
     cursor: pointer;
     display: none;
 }
@@ -3125,13 +3125,13 @@ body.search .description_content_search {
     position: absolute;
     top: -30px;
     right: 0;
-    z-index: 3;
+    z-index: 11;
 }
 
 .popup-sos .popup-content .popup-inner {
     background: #f4f2c9;
     position: relative;
-    z-index: 3;
+    z-index: 11;
     height: 100%;
     overflow: auto;
     padding: 15px;

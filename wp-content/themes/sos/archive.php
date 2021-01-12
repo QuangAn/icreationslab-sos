@@ -124,7 +124,7 @@ get_header();
 		    jQuery(document).ready(function(){
 		        url = "<?php echo admin_url('admin-ajax.php');?>";
 		        template = "<?php echo $template; ?>";
-		        ajaxPopup(".history_link,.history_img","post", "#loading-memory",url,'#popup',template);
+		        ajaxPopup(".history_link,.history_img","post", "#loading-memory",url,'.popup-memories',template);
 		    })
 		</script>
 		<?php } ?>
