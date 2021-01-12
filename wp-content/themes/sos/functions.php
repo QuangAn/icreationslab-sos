@@ -427,7 +427,7 @@ function loadPostPopupMemories_init(){
 	</article><!-- #post-<?php the_ID(); ?> -->
 	<script>
 		jQuery(document).ready(function(){
- 			jQuery('.popup-title').text("<?php the_title() ?>");
+ 			jQuery('.popup-title').html("<?php the_title() ?>");
 		});
 	</script>
 <?php
