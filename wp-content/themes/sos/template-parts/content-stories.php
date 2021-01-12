@@ -18,7 +18,9 @@ $post_type = get_field('post_type');
             $youtube_id = getYoutubeIdFromUrl($youtube_link); ;
 	 ?>
 	 <div class="our-story-img youtube-thumb">
-        <?php if(has_post_thumbnail()) echo $thumbnail; else{  ?>
+        <?php if(has_post_thumbnail()){  ?>
+            <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"  class="story__img"><?php echo $thumbnail; ?></a>
+        <?php }else{  ?>
         <img src="https://i1.ytimg.com/vi/<?php echo $youtube_id; ?>/maxresdefault.jpg" alt="" />
         <?php } ?>
     </div>

@@ -19,7 +19,7 @@ get_header();
 		$image = get_field('feature_image', 'category_'. $cat_id);
 		$show_sidebar = get_field('show_sidebar');
 	?>
-<div class="page-header <?php if(!get_the_post_thumbnail()) echo 'not-feature-image' ?>">
+<div class="page-header <?php if(!$image) echo 'not-feature-image' ?>">
 	<div class="feature_image_category">
 		<img src="<?php echo $image['url']; ?>" alt="" />
 	</div>
