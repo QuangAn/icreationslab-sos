@@ -124,15 +124,19 @@ jQuery(document).ready(function() {
 
     jQuery('#searchsubmit').click(function() {
         jQuery('#searchform input#s').toggleClass('active');
+        jQuery('#searchform').toggleClass('active');
 
     });
     jQuery('body').click(function(e) {
-        if (jQuery(e.target).closest("#searchform input#s,#searchsubmit").length === 0)
+        if (jQuery(e.target).closest("#searchform input#s,#searchsubmit").length === 0) {
             jQuery('#searchform input#s').removeClass('active');
+            jQuery('#searchform').removeClass('active');
+        }
 
     });
     jQuery('#searchform input#s').blur(function() {
         jQuery(this).removeClass('active');
+        jQuery('#searchform').removeClass('active');
     });
 
     jQuery('#menu-toggle').click(function() {

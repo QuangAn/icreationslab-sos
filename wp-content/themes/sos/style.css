@@ -1164,9 +1164,6 @@ header #top-search #searchsubmit {
     outline: none;
 }
 
-header #top-search #searchsubmit span {
-    display: none;
-}
 
 header #quiz-link {
     display: flex;
@@ -1882,12 +1879,13 @@ footer .copy-right a {
     }
 
 
-    .popup-memories .popup-content{
+    .popup-memories .popup-content {
         max-width: 940px;
         min-width: 768px;
         width: auto;
     }
-    .popup-memories .popup-content article a{
+
+    .popup-memories .popup-content article a {
         text-align: center;
         display: block;
     }
@@ -2068,8 +2066,8 @@ footer .copy-right a {
     }
 
     header #top-search input#s {
-        right: 50%;
-        transform: translateX(50%);
+        right: 0;
+        margin-right: -65px;
     }
 
     body .block-about-3 .block-about-3__bottom ul li {
@@ -2229,7 +2227,7 @@ footer .copy-right a {
     text-align: center;
     color: #fff;
     font-size: 21px;
-        width: 100%;
+    width: 100%;
     padding: 0 15px;
 }
 
@@ -3166,9 +3164,51 @@ body.search .description_content_search {
     border-radius: 5px;
 
 }
-.created_wall{
+
+.created_wall {
     color: #d5ad36;
 }
-.iframe-youtube-single{
-    margin:20px 0;
+
+.iframe-youtube-single {
+    margin: 20px 0;
+}
+
+#searchform.active #searchsubmit {
+    background: none;
+}
+
+#searchform.active #searchsubmit span {
+    visibility: visible;
+    opacity: 1;
+}
+
+#searchform.active #searchsubmit span:last-child {
+    top: 21px;
+    transform: rotate(45deg) translateX(-50%);
+}
+
+#searchform.active #searchsubmit span:first-child {
+    top: 9px;
+    transform: rotate(-45deg) translateX(-50%);
+}
+
+#searchsubmit {
+    position: relative;
+    transition: 0.3s background-image;
+}
+
+#searchsubmit span {
+    visibility: hidden;
+    opacity: 0;
+    background-color: #fff;
+    width: 17px;
+    border-radius: 5px;
+    display: block;
+    height: 2px;
+    left: 50%;
+    margin-left: -2px;
+    opacity: 1;
+    position: absolute;
+    transform: rotate(0deg) translateX(-50%);
+    transition: all 0.25s ease-in-out 0s;
 }

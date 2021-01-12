@@ -40,7 +40,10 @@
 		<button id="menu-toggle" >Menu</button>
 		<div id="top-search">
 			<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-				<button type="button" id="searchsubmit"><span>Search</span><img src="" alt=""></button>
+				<button type="button" id="searchsubmit">
+					<span></span>
+					<span></span>
+				</button>
 			    <input type="text" value="" name="s" id="s" placeholder="Search..." />
 			</form>
 		</div>
