@@ -385,7 +385,7 @@ function loadPostPopup_init(){
 
 ?>
 	<div class="the-wall-item">
-	    <a href="javascript:void(0)" class="the-wall-img"><?php echo get_thumb($post[0]->ID,'full'); ?></a>
+	    <a href="javascript:void(0)" class="the-wall-img-popup"><?php echo get_thumb($post[0]->ID,'full'); ?></a>
 	    <div class="the-wall__content">
 	        <div class="the-wall-des"><?php echo $post[0]->post_content; ?>
 	        </div>
@@ -424,12 +424,12 @@ function loadPostPopupMemories_init(){
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<a href="javascript:void(0)" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('full'); ?></a>
-
-		<div class="entry-header">
-			<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
-		</div><!-- .entry-header -->
-
 	</article><!-- #post-<?php the_ID(); ?> -->
+	<script>
+		jQuery(document).ready(function(){
+ 			jQuery('.popup-title').text("<?php the_title() ?>");
+		});
+	</script>
 <?php
 	endwhile;
     wp_reset_query();
@@ -584,7 +584,7 @@ function loadPostWall_init() {
 
 ?>
 <div class="the-wall-item">
-    <a href="javascript:void(0)" data-id="<?php the_ID(); ?>" class="the-wall-img"><?php echo get_thumb(get_the_ID(),'wall-thumb'); ?></a>
+    <a href="javascript:void(0)" data-id="<?php the_ID(); ?>" class="the-wall-img-popup"><?php echo get_thumb(get_the_ID(),'wall-thumb'); ?></a>
     <div class="the-wall__content">
         <div class="the-wall-des"><?php echo wp_strip_all_tags(get_the_excerpt()); ?>
         <a href="javascript:void(0)" class="the-wall-readmore"  data-id="<?php the_ID(); ?>">Read More</a>

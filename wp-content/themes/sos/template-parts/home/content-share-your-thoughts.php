@@ -32,7 +32,7 @@
                 <input type="text" name="occupation" placeholder="Occupation" required />
             </div>
             <div class="control textarea">
-                <textarea name="message"placeholder="Message" required></textarea>
+                <textarea name="message"placeholder="Message" maxlength="150" required></textarea>
                 <div class="max-input">Max 150 characters</div>
             </div>
             <div class="action">
@@ -49,7 +49,7 @@
    jQuery(document).ready(function(){
      jQuery('html, body').animate({
                 scrollTop: jQuery(".share-your-thoughts").offset().top
-    }, 500);
+    }, 100);
    });
 </script>
 <?php } ?>

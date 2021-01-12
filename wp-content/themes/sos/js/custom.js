@@ -48,7 +48,7 @@ function ajaxLoadPost(url, buttonId, loadingId, gridClass, post_type, cat_id, po
     });
 }
 
-function ajaxPopup(el, post_type, loadingId, url, parentEl = '#wall-popup', template = '') {
+function ajaxPopup(el, post_type, loadingId, url, parentEl = '.popup-sos', template = '') {
     jQuery("body").on("click", el, function() {
         var postId = jQuery(this).attr('data-id');
         var action = "loadPostPopup";
@@ -74,12 +74,10 @@ function ajaxPopup(el, post_type, loadingId, url, parentEl = '#wall-popup', temp
 
                 if (response.success) {
                     if (response.data) {
+                        jQuery(parentEl).addClass('active').find('.popup-inner').append(response.data);
                         jQuery(loadingId).hide();
-                        jQuery(parentEl).addClass('active').find('.popup-content').append(response.data);
-
                     } else {
                         jQuery(loadingId).hide();
-                        jQuery('.overlay-popup').hide();
                     }
 
                 } else {
@@ -93,10 +91,11 @@ function ajaxPopup(el, post_type, loadingId, url, parentEl = '#wall-popup', temp
         });
         return false;
     });
-    jQuery('.close-popup,.overlay-popup').click(function() {
-        jQuery(parentEl).removeClass('active').find('.popup-content').html('');
-        jQuery('.overlay-popup').hide();
+    jQuery('#close-popup,.overlay-popup').click(function() {
+        jQuery(parentEl).removeClass('active').find('.popup-inner').html('');
+        jQuery(loadingId).hide();
     });
+
 }
 
 function sticky_menu(menu, sticky) {

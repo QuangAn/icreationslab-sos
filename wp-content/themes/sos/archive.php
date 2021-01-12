@@ -105,18 +105,26 @@ get_header();
 		<?php endif; ?>
 	</main><!-- #main -->
 <?php if($template == 'memories'){ ?>
-		<div class="loading" id="loading-memory" style="display: none">Loadding...</div>
-		<div class="overlay-popup" style="display: none;"></div>
-		<div id="memory-popup" class="popup-custom">
-		    <div class="close-popup"><span>X</span>&nbsp;&nbsp;<span>CLOSE</span></div>
-		    <div class="popup-content"></div>
+		<div class="loading" id="loading-memories" style="display: none">
+		    <div class="loading-text">Loadding...</div>
+		    <div class="overlay-popup"></div>
+		</div>
+		<div id="popup" class="popup-memories  popup-sos">
+			<div class="popup-content">
+				<div id="close-popup"><span>X</span>&nbsp;&nbsp;<span>CLOSE</span></div>
+				<div class="popup-inner white radios scroll-css">
+					
+				</div>
+				<h2 class="popup-title"></h2>
+			</div>
+			<div class="overlay-popup"></div>
 		</div>
 		<script>
 
 		    jQuery(document).ready(function(){
 		        url = "<?php echo admin_url('admin-ajax.php');?>";
 		        template = "<?php echo $template; ?>";
-		        ajaxPopup(".history_link,.history_img","post", "#loading-memory",url,'#memory-popup',template);
+		        ajaxPopup(".history_link,.history_img","post", "#loading-memory",url,'#popup',template);
 		    })
 		</script>
 		<?php } ?>

@@ -38,11 +38,19 @@ if ( $walls->have_posts() ) { ?>
        
     </div>
 </div>
-<div class="loading" id="loading-wall" style="display: none">Loadding...</div>
-<div class="overlay-popup" style="display: none;"></div>
-<div id="wall-popup" class="popup-custom">
-    <div class="close-popup"><span>X</span>&nbsp;&nbsp;<span>CLOSE</span></div>
-    <div class="popup-content"></div>
+<div class="loading" id="loading-wall" style="display: none">
+    <div class="loading-text">Loadding...</div>
+    <div class="overlay-popup"></div>
+</div>
+    
+<div id="popup-wall" class="popup-sos">
+    <div class="popup-content fix-height">
+        <div id="close-popup"><span>X</span>&nbsp;&nbsp;<span>CLOSE</span></div>
+        <div class="popup-inner radios scroll-css">
+            
+        </div>
+        <div class="overlay-popup"></div>
+    </div>
 </div>
 <script>
 
