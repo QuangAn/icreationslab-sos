@@ -17,6 +17,7 @@ get_header();
 		$description_content = get_field('description_content', 'category_'. $cat_id);
 		$posts_per_page = get_field('posts_per_page', 'category_'. $cat_id);
 		$template = get_field('category_template', 'category_'. $cat_id);
+		$custom_title = get_field('custom_title', 'category_'. $cat_id);
 		if($template == 'stories') $gridClass = '2';
 		if($template == 'memories') $gridClass = '3';
 		if($template == 'happening') $gridClass = '3 grid-default';
@@ -38,10 +39,10 @@ get_header();
 					<img src="<?php echo $image['url']; ?>" alt="" />
 				</div>
 				<div class="box-des-category">
-					<?php if($template != 'memories'){ ?>
+					<?php if(!$custom_title){ ?>
 					<h1 class="page-title"><?php  the_category(', ');  ?></h1>
 					<?php }else{ ?>
-						<h1 class="page-title">Walking Down Memory Lane</h1>
+						<h1 class="page-title"><?= $custom_title; ?></h1>
 					<?php } ?>
 					<?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
 				</div>
