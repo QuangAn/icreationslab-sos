@@ -134,10 +134,7 @@ jQuery(document).ready(function() {
         }
 
     });
-    jQuery('#searchform input#s').blur(function() {
-        jQuery(this).removeClass('active');
-        jQuery('#searchform').removeClass('active');
-    });
+
 
     jQuery('#menu-toggle').click(function() {
         jQuery('#site-navigation').toggleClass('toggled');
