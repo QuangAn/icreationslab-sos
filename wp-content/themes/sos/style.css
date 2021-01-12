@@ -2228,6 +2228,8 @@ footer .copy-right a {
     text-align: center;
     color: #fff;
     font-size: 21px;
+        width: 100%;
+    padding: 0 15px;
 }
 
 .category .page-header .box-des-category .page-title,
@@ -2239,7 +2241,8 @@ footer .copy-right a {
 
 .category .page-header .box-des-category .page-title a,
 .page .page-header .box-des-category .page-title a,
-.single .page-header .box-des-category .page-title a {
+.single .page-header .box-des-category .page-title a,
+.category .page-header .box-des-category .page-title {
     text-decoration: none;
     color: #fff;
     font-weight: normal;
@@ -2905,6 +2908,7 @@ body.search .description_content_search {
     }
 
     body.category .page-header .box-des-category .page-title a,
+    body.category .page-header .box-des-category .page-title,
     .single .pa,
     .page .page-header .box-des-category .page-title a {
         font-size: 40px;
