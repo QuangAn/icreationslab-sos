@@ -15,7 +15,7 @@ $post_type = get_field('post_type');
         $thumbnail = get_thumb(get_the_ID(),'category-thumb');
 		if($post_type == 'video') {
 			$youtube_link = get_field('youtube_link');
-            $youtube_id = getYoutubeIdFromUrl($youtube_link); ;
+            $youtube_id = getYoutubeIdFromUrl($youtube_link);
 	 ?>
 	 <div class="our-story-img youtube-thumb">
         <?php if(has_post_thumbnail()){  ?>
