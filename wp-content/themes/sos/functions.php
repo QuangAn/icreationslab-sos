@@ -558,10 +558,7 @@ function loadpost_init() {
         'cat' => $cat_id,
         'post_type'     => 'post',
         'posts_per_page'=> $posts_per_page,
-        'offset'	=> $offset,
-        'orderby' 	=>'modified',
-        'order'	=>	'ASC'
-        
+        'offset'	=> $offset
     );
     $query = new WP_Query($args);
     if($query->have_posts()):

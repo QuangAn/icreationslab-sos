@@ -1882,7 +1882,9 @@ footer .copy-right a {
         padding: 20px;
     }
 
-
+    .happening.template-grid-3.grid-default article{
+        margin-bottom: 30px;
+    }
     .popup-memories .popup-content {
         max-width: 940px;
         min-width: 768px;

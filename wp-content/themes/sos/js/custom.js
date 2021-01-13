@@ -12,6 +12,7 @@ function ajaxLoadPost(url, buttonId, loadingId, gridClass, post_type, cat_id, po
         if (template == 'memories') {
             action = "loadpostMemories";
         }
+        
         jQuery.ajax({
             type: "post",
             url: url,
@@ -31,7 +32,7 @@ function ajaxLoadPost(url, buttonId, loadingId, gridClass, post_type, cat_id, po
                 if (response.success) {
                     if (response.data) {
                         jQuery(response.data).appendTo(gridClass);
-                        console.log(response.data);
+                       
                         jQuery(loadingId).hide();
                     } else {
                         jQuery(loadingId).hide();
