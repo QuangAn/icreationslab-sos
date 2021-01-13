@@ -707,6 +707,7 @@ textarea {
 }
 
 @media screen and (min-width: 1024px) {
+
     .page main:not(.page-full) {
         padding: 50px 8%;
     }
@@ -1135,6 +1136,7 @@ header #top-search input#s {
     transition: .3s all;
     visibility: hidden;
     opacity: 0;
+    font-family: AveriaSerifLibre-Light, cursive;
 }
 
 header #top-search input#s.active {
@@ -1334,6 +1336,7 @@ header #quiz-link a:hover {
 
 .the-wall-home .block-content .the-wall-item .the-wall-bottom p {
     margin-bottom: 0;
+    font-size: 14px;
 }
 
 .the-wall-home .owl-theme .owl-nav.disabled+.owl-dots {
@@ -1418,10 +1421,12 @@ header #quiz-link a:hover {
     display: flex;
     width: 100%;
 }
-.our-story .our-story-img a{
+
+.our-story .our-story-img a {
     display: block;
     width: 100%;
 }
+
 .our-story-img.youtube-thumb {
     cursor: pointer;
     position: relative;
@@ -1484,7 +1489,6 @@ header #quiz-link a:hover {
     right: 0;
     z-index: 9999;
     display: block;
-    font-family: Inter-Bold;
     cursor: pointer;
 }
 
@@ -1689,15 +1693,58 @@ header #quiz-link a:hover {
 
 .share-your-thoughts form .control.input input {
     width: 100%;
+    font-family: AveriaSerifLibre-Light, cursive;
+}
+
+.share-your-thoughts form .control.input input:-ms-input-placeholder,
+.share-your-thoughts form .control.input textarea:-ms-input-placeholder {
+    color: #898989;
+    font-size: 16px;
+}
+
+.share-your-thoughts form .control.input input::-moz-placeholder,
+.share-your-thoughts form .control.input textarea::-moz-placeholder {
+    color: #898989;
+    font-size: 16px;
+}
+
+.share-your-thoughts form .control.input input::-moz-placeholder,
+.share-your-thoughts form .control.input textarea::-moz-placeholder {
+    color: #898989;
+    font-size: 16px;
+}
+
+.share-your-thoughts form .control.input input:-ms-input-placeholder,
+.share-your-thoughts form .control.input textarea:-ms-input-placeholder {
+    color: #898989;
+    font-size: 16px;
+}
+
+.share-your-thoughts form .control.input input::-moz-placeholder, .share-your-thoughts form .control.input textarea::-moz-placeholder {
+    color: #898989;
+    font-size: 16px;
+}
+
+.share-your-thoughts form .control.input input:-ms-input-placeholder, .share-your-thoughts form .control.input textarea:-ms-input-placeholder {
+    color: #898989;
+    font-size: 16px;
+}
+
+.share-your-thoughts form .control.input input::placeholder,
+.share-your-thoughts form .control.input textarea::placeholder {
+    color: #898989;
+    font-size: 16px;
 }
 
 .share-your-thoughts form .control.textarea {
     width: 100%;
+    font-family: AveriaSerifLibre-Light, cursive;
 }
 
 .share-your-thoughts form .control.textarea textarea {
     width: 100%;
     height: 150px;
+    font-family: AveriaSerifLibre-Light, cursive;
 }
 
 .share-your-thoughts form .control.textarea .max-input {
@@ -1726,7 +1773,7 @@ footer.footer-content {
 }
 
 footer.footer-content {
-    background-image: linear-gradient(to left, #265999, #87abd8);
+    background-image: linear-gradient(to top, #265999, #87abd8);
     color: #fff;
     height: 707px;
     display: flex;
@@ -1785,7 +1832,7 @@ footer.footer-content .social-footer .social-footer__content a:last-child:before
 }
 
 footer.footer-content .widget {
-    margin-bottom: 0;
+    margin-bottom: 15px;
     width: 100%;
     text-align: center;
     display: flex;
@@ -1860,7 +1907,10 @@ footer .copy-right a {
     text-transform: uppercase;
 }
 
-
+.happening .entry-content{
+    font-size: 16px;
+    color: #000;
+}
 @media only screen and (max-width: 1450px) {
     .banner .banner-item .banner-item__box .banner-des {
         font-size: 1.7vw;
@@ -1878,13 +1928,41 @@ footer .copy-right a {
 }
 
 @media only screen and (min-width: 1024px) {
+    .page-wall .description_content_category {
+        margin-top: 70px;
+    }
+    .happening.template-grid {
+       padding: 0 65px;
+    }
+
+
+    .memories.template-grid {
+        box-sizing: content-box;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .memories.template-grid.template-grid-3 article {
+        width: calc((100% / 3) - 30px);
+        margin-bottom: 25px;
+    }
+
+    .memories.template-grid.template-grid-3 article:not(:nth-child(3n)) {
+        margin-right: 45px;
+    }
+
     #popup-wall .popup-inner {
         padding: 20px;
     }
 
-    .happening.template-grid-3.grid-default article{
+    .quiz .block-content .quiz-content {
+        padding: 0 30px;
+    }
+
+    .happening.template-grid-3.grid-default article {
         margin-bottom: 30px;
     }
+
     .popup-memories .popup-content {
         max-width: 940px;
         min-width: 768px;
@@ -1940,6 +2018,9 @@ footer .copy-right a {
 }
 
 @media only screen and (max-width: 1024px) {
+    .quiz .block-content .quiz-content {
+        padding: 0 15px;
+    }
 
     .page main:not(.page-full) {
         padding: 50px 15px
@@ -2179,7 +2260,7 @@ footer .copy-right a {
     margin-top: 60px;
     padding: 0 8%;
     max-width: 1500px;
-    margin: 60px auto 0 auto;
+    margin: 60px auto;
 }
 
 .template-grid-2 article {
@@ -2377,7 +2458,7 @@ footer .copy-right a {
 
 .wall-category {
     padding: 0 40px;
-    margin: 60px 0 40px 0;
+    margin: 60px 0;
     max-width: 100%;
 }
 
@@ -2396,7 +2477,20 @@ footer .copy-right a {
 
 .template-grid-3.grid-default article {
     background: #f4f2c9;
-    padding: 20px 20px 30px;
+    padding: 20px 20px 35px;
+}
+
+.happening.template-grid-3.grid-default article h2.entry-title {
+    margin-top: 26px;
+}
+.happening.template-grid-3.grid-default article .entry-meta {
+    margin-top: 5px;
+}
+.happening.template-grid-3.grid-default article .entry-content {
+    margin-top: 13px !important;
+    padding: 0 20px;
+    word-spacing: 2px;
+    line-height: 21px;
 }
 
 .template-grid-3.grid-default article h2.entry-title {
@@ -2649,7 +2743,7 @@ body.search .description_content_search {
 }
 
 .collection-search article:hover {
-    background-image: linear-gradient(to left, #d5b142, #e4df91);
+    background-image: linear-gradient(to top, #d5b142, #e4df91);
 }
 
 .collection-search article:hover * {
@@ -2728,16 +2822,32 @@ body.search .description_content_search {
 
 .block-about-1>div.block-about-1__content .block-about__des {
     font-size: 17px;
-    line-height: 35px;
+    line-height: 30px;
+
+    margin-top: 25px;
 }
 
 .block-about-1>div.block-about-1__content.center {
     text-align: center;
 }
 
+.block-about-1>div.block-about-1__content.left {
+    display: block;
+    padding: 60px 80px;
+}
+
+.block-about-1>div.block-about-1__content.left .block-about__des {
+    text-align: justify;
+}
+
+.block-about-1>div.block-about-1__content.left h2 {
+    margin: 10px 0;
+    text-align: left;
+}
+
 .block-about-1>div.block-about-1__content.yellow {
     color: #393939;
-    background-image: linear-gradient(to left, #d5b142, #e4df91);
+    background-image: linear-gradient(to top, #d5b142, #e4df91);
 }
 
 .block-about-1>div.block-about-1__content.yellow h2 {
@@ -2747,14 +2857,14 @@ body.search .description_content_search {
 
 .block-about-1>div.block-about-1__content.blue {
     color: #fff;
-    background-image: linear-gradient(to left, #295b9b, #82a7d5);
+    background-image: linear-gradient(to top, #295b9b, #82a7d5);
 }
 
 .block-about-2 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    max-width: 1260px;
+    max-width: 1276px;
     margin: 0 auto;
     padding: 50px 15px;
 }
@@ -2765,7 +2875,11 @@ body.search .description_content_search {
 
 .block-about-2 .block-about-2__content {
     width: calc(100% - 295px);
-    padding-left: 50px;
+    padding-left: 75px;
+}
+
+.block-about-2 .block-about-2__content .block-about__des {
+    line-height: 30px;
 }
 
 .block-about-2 .block-about-2__content h2 {
@@ -2836,6 +2950,7 @@ body.search .description_content_search {
 
 .block-about-3 .block-about-3__bottom ul li .author-name span.name {
     font-size: 21px;
+    line-height: 25px;
     color: #000;
     font-family: AveriaSerifLibre-Regular;
 }
@@ -3124,7 +3239,7 @@ body.search .description_content_search {
 .popup-sos .popup-content #close-popup {
     color: #fff;
     display: block;
-    font-family: Inter-Bold;
+
     cursor: pointer;
     font-size: 15px;
     position: absolute;
@@ -3223,9 +3338,11 @@ body.search .description_content_search {
     padding: 50px 8%;
     text-align: center;
 }
+
 .banner-main .banner-item .banner-item__box .banner-item__desciption:before {
     display: none;
 }
+
 .banner-main .owl-dots {
     margin: 0 !important;
     position: absolute;
@@ -3233,14 +3350,20 @@ body.search .description_content_search {
     left: 50%;
     transform: translatex(-50%);
 }
+
 .banner-main .owl-dots button.active span,
 .banner-main .owl-dots button:hover span {
     background: #fff !important;
 }
+
 .banner-main .owl-dots button span {
     background: transparent !important;
     border: 1px solid #fff;
     width: 11px !important;
     height: 11px !important;
     margin: 5px 13px !important;
+}
+
+.main-navigation ul li .sub-menu a {
+    font-size: 15px;
 }
