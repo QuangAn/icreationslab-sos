@@ -54,7 +54,7 @@
             $i++; 
             $post_type = get_field('post_type');
         ?>
-        <div class="our-story">
+        <div class="our-story <?php echo $post_type; ?>">
             <?php 
              $thumbnail = get_thumb($post->ID,'wall-thumb');
             if($post_type == 'video') : 
@@ -88,12 +88,22 @@
                         })
                     });
                 </script>
-            <?php else : ?>
-            <div class="our-story-img"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>" class="our-story__des"><?php echo $thumbnail ?></a></div>
+            <?php 
+            else :
+                $icon = get_field('icon_on_homepage');
+              ?>
+            <div class="our-story-img"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>" class="our-story__des">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/story-bg.jpg" alt="" />
+            </a></div>
             <div class="our-story__content">
+                <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
+                    <?php if($icon['url']){ ?>
+                    <img src="<?php echo $icon['url']  ?>" alt="" />
+                    <?php } ?>
                     <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>" class="our-story__des">
                         <?php the_title(); ?>
                     </a>
+                </a>
             </div>
             <?php endif; ?>
         </div>

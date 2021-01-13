@@ -1418,7 +1418,10 @@ header #quiz-link a:hover {
     display: flex;
     width: 100%;
 }
-
+.our-story .our-story-img a{
+    display: block;
+    width: 100%;
+}
 .our-story-img.youtube-thumb {
     cursor: pointer;
     position: relative;
@@ -1466,6 +1469,7 @@ header #quiz-link a:hover {
 
 .our-story .our-story__content a {
     text-decoration: none;
+    display: block;
 }
 
 .our-story .our-story__content .our-story__img {
@@ -3216,4 +3220,25 @@ body.search .description_content_search {
 .no-results.not-found {
     padding: 50px 8%;
     text-align: center;
+}
+.banner-main .banner-item .banner-item__box .banner-item__desciption:before {
+    display: none;
+}
+.banner-main .owl-dots {
+    margin: 0 !important;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translatex(-50%);
+}
+.banner-main .owl-dots button.active span,
+.banner-main .owl-dots button:hover span {
+    background: #fff !important;
+}
+.banner-main .owl-dots button span {
+    background: transparent !important;
+    border: 1px solid #fff;
+    width: 11px !important;
+    height: 11px !important;
+    margin: 5px 13px !important;
 }

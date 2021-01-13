@@ -5,6 +5,7 @@
 	get_header();
 ?>
 <main class="page-home page-full">
+	<?php get_template_part('template-parts/home/content','banner-main'); ?>
 	<?php get_template_part('template-parts/home/content','banner'); ?>
 	<?php get_template_part('template-parts/home/content','post-on-memories'); ?>
 	<?php get_template_part('template-parts/home/content','post-on-stories'); ?>
