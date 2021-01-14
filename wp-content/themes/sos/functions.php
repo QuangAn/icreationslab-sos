@@ -247,7 +247,7 @@ function create_main_banner_type() {
 		'label'                 => 'Banner',
 		'description'           => 'Banner Homepage',
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title', 'thumbnail' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,

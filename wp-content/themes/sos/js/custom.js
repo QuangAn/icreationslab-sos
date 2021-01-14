@@ -12,7 +12,7 @@ function ajaxLoadPost(url, buttonId, loadingId, gridClass, post_type, cat_id, po
         if (template == 'memories') {
             action = "loadpostMemories";
         }
-        
+
         jQuery.ajax({
             type: "post",
             url: url,
@@ -32,7 +32,7 @@ function ajaxLoadPost(url, buttonId, loadingId, gridClass, post_type, cat_id, po
                 if (response.success) {
                     if (response.data) {
                         jQuery(response.data).appendTo(gridClass);
-                       
+
                         jQuery(loadingId).hide();
                     } else {
                         jQuery(loadingId).hide();
@@ -111,6 +111,15 @@ function sticky_menu(menu, sticky) {
     }
 }
 
+function scrollToHash(url) {
+    if(url) var hash = url.substring(url.indexOf('#'));
+    else var hash = window.location.hash;
+
+    if (hash) {
+        var scrollTop = jQuery(hash).offset().top;
+        jQuery('body,html').animate({ scrollTop: (scrollTop - 25) }, 1000);
+    }
+}
 
 
 jQuery(document).ready(function() {
@@ -156,5 +165,10 @@ jQuery(document).ready(function() {
     });
     jQuery('#back_top').click(function() {
         jQuery('body,html').animate({ scrollTop: 0 }, 1000);
+    });
+    scrollToHash();
+    jQuery('ul.sub-menu a').click(function() {
+        var url = jQuery(this).attr('href');
+        scrollToHash(url);
     });
 });

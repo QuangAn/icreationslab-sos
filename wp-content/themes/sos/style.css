@@ -1640,6 +1640,7 @@ header #quiz-link a:hover {
     cursor: pointer;
     font-size: 16px;
     font-weight: normal !important;
+    text-transform: capitalize;
 }
 
 .quiz .block-content .action-quiz {
@@ -1704,6 +1705,18 @@ header #quiz-link a:hover {
 
 .share-your-thoughts form .control.input input::-moz-placeholder,
 .share-your-thoughts form .control.input textarea::-moz-placeholder {
+    color: #898989;
+    font-size: 16px;
+}
+
+.share-your-thoughts form .control.input input::-moz-placeholder,
+.share-your-thoughts form .control.input textarea::-moz-placeholder {
+    color: #898989;
+    font-size: 16px;
+}
+
+.share-your-thoughts form .control.input input:-ms-input-placeholder,
+.share-your-thoughts form .control.input textarea:-ms-input-placeholder {
     color: #898989;
     font-size: 16px;
 }
@@ -1907,10 +1920,11 @@ footer .copy-right a {
     text-transform: uppercase;
 }
 
-.happening .entry-content{
+.happening .entry-content {
     font-size: 16px;
     color: #000;
 }
+
 @media only screen and (max-width: 1450px) {
     .banner .banner-item .banner-item__box .banner-des {
         font-size: 1.7vw;
@@ -1931,8 +1945,9 @@ footer .copy-right a {
     .page-wall .description_content_category {
         margin-top: 70px;
     }
+
     .happening.template-grid {
-       padding: 0 65px;
+        padding: 0 65px;
     }
 
 
@@ -2483,9 +2498,11 @@ footer .copy-right a {
 .happening.template-grid-3.grid-default article h2.entry-title {
     margin-top: 26px;
 }
+
 .happening.template-grid-3.grid-default article .entry-meta {
     margin-top: 5px;
 }
+
 .happening.template-grid-3.grid-default article .entry-content {
     margin-top: 13px !important;
     padding: 0 20px;
@@ -3341,6 +3358,12 @@ body.search .description_content_search {
 
 .banner-main .banner-item .banner-item__box .banner-item__desciption:before {
     display: none;
+}
+
+.banner-main .banner-item .banner-item__box {
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .banner-main .owl-dots {

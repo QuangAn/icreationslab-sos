@@ -9,16 +9,17 @@ if ( $banner_main->have_posts() ) { ?>
 		<?php
 			while ( $banner_main->have_posts() ) {
 				$banner_main->the_post();
+				$logo = get_field('icon');
 		?>
 		<div class="banner-item">
 			<div class="banner-item__img">
 				<?php the_post_thumbnail('full'); ?>
 			</div>
-			<?php if(get_the_content()){ ?>
+			
 			<div class="banner-item__box">
-				<div class="banner-item__desciption"><?php the_content(); ?></div>
+				<div class="banner-main__logo"><img src="<?php echo $logo['url'] ?>" alt=""></div>
 			</div>
-			<?php } ?>
+			
 		</div>
 		<?php } ?> 
 	</div>

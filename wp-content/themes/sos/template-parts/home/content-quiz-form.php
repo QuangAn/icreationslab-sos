@@ -81,6 +81,6 @@
         });
     }
     jQuery('document').ready(function(){
-        quiz(3);
+        quiz(jQuery('#gform_fields_1 >li').size());
     });
 </script>
