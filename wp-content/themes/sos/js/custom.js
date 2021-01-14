@@ -112,7 +112,7 @@ function sticky_menu(menu, sticky) {
 }
 
 function scrollToHash(url) {
-    if(url) var hash = url.substring(url.indexOf('#'));
+    if (url) var hash = url.substring(url.indexOf('#'));
     else var hash = window.location.hash;
 
     if (hash) {

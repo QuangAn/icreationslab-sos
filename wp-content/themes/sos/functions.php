@@ -440,7 +440,7 @@ function loadPostPopup_init(){
 
 ?>
 	<div class="the-wall-item">
-	    <a href="javascript:void(0)" class="the-wall-img-popup"><?php echo get_thumb($post[0]->ID,'full'); ?></a>
+	    <a href="javascript:void(0)" class="the-wall-img-popup"><?php echo get_thumb($post[0]->ID,'wall-thumb'); ?></a>
 	    <div class="the-wall__content">
 	        <div class="the-wall-des"><?php echo $post[0]->post_content; ?>
 	        </div>

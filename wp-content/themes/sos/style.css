@@ -1910,14 +1910,19 @@ footer .copy-right a {
     text-align: center;
     color: #000;
 }
-
+.popup-sos .the-wall-item img{
+    width: 100%;
+}
 .popup-sos .the-wall-item .the-wall-bottom {
     margin-top: 15px;
 }
-
+.popup-sos .the-wall-item .the-wall-des{
+    padding: 0 25px;
+}
 .popup-sos .the-wall-item .the-wall-bottom p {
     margin: 0;
     text-transform: uppercase;
+    font-size: 14px;
 }
 
 .happening .entry-content {
@@ -1967,7 +1972,7 @@ footer .copy-right a {
     }
 
     #popup-wall .popup-inner {
-        padding: 20px;
+        padding: 15px;
     }
 
     .quiz .block-content .quiz-content {
@@ -3245,8 +3250,8 @@ body.search .description_content_search {
 .popup-sos .popup-content {
     position: relative;
     z-index: 10;
-    width: 768px;
-    max-height: 80%;
+    width: 690px;
+    max-height: 82%;
 }
 
 .popup-sos .popup-content.fix-height {
