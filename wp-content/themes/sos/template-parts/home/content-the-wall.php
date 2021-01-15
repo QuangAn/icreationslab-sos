@@ -1,6 +1,7 @@
 <?php 
 $args = array(
     'post_type' => array( 'the_wall' ),
+    'post_status' => 'publish',
     'meta_key'      => 'show_on_homepage',
      'meta_value'    => 'yes'
 );
@@ -60,7 +61,7 @@ if ( $walls->have_posts() ) { ?>
 
         var owl_wall = jQuery('.the-wall-home .owl-carousel');
         owl_wall.owlCarousel({
-            loop: true,
+            loop: false,
             nav: false,
             dots:true,
             items:2,

@@ -46,7 +46,7 @@
 <?php if ( $query->have_posts() ) :  ?>
 <div class="our-stories-home">
     <div class="block-title">
-        <h2><?php echo $cat_name; ?></h2>
+        <h2>Our Stories</h2>
     </div>
     <div class="block-content">
     	<?php 

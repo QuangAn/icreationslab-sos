@@ -1101,15 +1101,24 @@ header nav.main-navigation ul li a {
     background: #ca9703;
 }
 
-header nav.main-navigation ul li.current-menu-item>a,
-header nav.main-navigation ul li:hover>a {
-    background: #d2ae44;
-    color: #fff;
+
+
+header nav.main-navigation ul ul.sub-menu {
+    background: #ca9703;
+}
+
+header nav.main-navigation ul ul.sub-menu li a {
+    background: transparent !important;
+}
+
+header nav.main-navigation ul ul.sub-menu li:hover a,
+header nav.main-navigation ul ul.sub-menu li.current-menu-item a {
+    background: #d2ae44 !important;
 }
 
 header nav.main-navigation ul.sub-menu {
     flex-direction: column;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 header #top-search {
@@ -1132,7 +1141,7 @@ header #top-search input#s {
     border: none;
     border-radius: 0;
     outline: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
     transition: .3s all;
     visibility: hidden;
     opacity: 0;
@@ -1314,13 +1323,17 @@ header #quiz-link a:hover {
 }
 
 .the-wall-home .block-content .the-wall-item {
-    padding-bottom: 40px;
+    padding-bottom: 25px;
 }
 
 .the-wall-home .block-content .the-wall-item .the-wall-des {
     color: #000;
     font-size: 16px;
-    margin-top: 40px;
+    margin-top: 25px;
+    padding: 0 25px;
+    text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
 }
 
 .the-wall-home .block-content .the-wall-item .the-wall-des a {
@@ -1733,6 +1746,18 @@ header #quiz-link a:hover {
     font-size: 16px;
 }
 
+.share-your-thoughts form .control.input input::-moz-placeholder,
+.share-your-thoughts form .control.input textarea::-moz-placeholder {
+    color: #898989;
+    font-size: 16px;
+}
+
+.share-your-thoughts form .control.input input:-ms-input-placeholder,
+.share-your-thoughts form .control.input textarea:-ms-input-placeholder {
+    color: #898989;
+    font-size: 16px;
+}
+
 .share-your-thoughts form .control.input input::-moz-placeholder, .share-your-thoughts form .control.input textarea::-moz-placeholder {
     color: #898989;
     font-size: 16px;
@@ -1778,6 +1803,10 @@ header #quiz-link a:hover {
     width: 140px;
     height: 50px;
     padding: 0;
+}
+
+.gquiz-field .gquiz-field-label {
+    font-weight: normal;
 }
 
 footer.footer-content {
@@ -1910,15 +1939,22 @@ footer .copy-right a {
     text-align: center;
     color: #000;
 }
-.popup-sos .the-wall-item img{
+
+.popup-sos .the-wall-item img {
     width: 100%;
 }
+
 .popup-sos .the-wall-item .the-wall-bottom {
-    margin-top: 15px;
+    margin: 25px 0;
 }
-.popup-sos .the-wall-item .the-wall-des{
+
+.popup-sos .the-wall-item .the-wall-des {
     padding: 0 25px;
+    text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
 }
+
 .popup-sos .the-wall-item .the-wall-bottom p {
     margin: 0;
     text-transform: uppercase;
@@ -1958,7 +1994,7 @@ footer .copy-right a {
 
     .memories.template-grid {
         box-sizing: content-box;
-        max-width: 1400px;
+        max-width: 1550px;
         margin: 0 auto;
     }
 
@@ -1972,7 +2008,7 @@ footer .copy-right a {
     }
 
     #popup-wall .popup-inner {
-        padding: 15px;
+        padding: 13px;
     }
 
     .quiz .block-content .quiz-content {
@@ -2127,7 +2163,7 @@ footer .copy-right a {
 
 @media only screen and (min-width: 768px) {
     .the-wall-home .owl-carousel .the-wall-item .the-wall__content {
-        min-height: 320px;
+        min-height: 348px;
     }
 }
 
@@ -2274,7 +2310,9 @@ footer .copy-right a {
 }
 
 .description_content_category {
-    text-align: center;
+    text-align: justify;
+    -moz-text-align-last: center;
+         text-align-last: center;
     font-size: 17px;
     color: #393939;
     margin-top: 60px;
@@ -2348,6 +2386,7 @@ footer .copy-right a {
 .category .page-header .box-des-category .page-title a,
 .page .page-header .box-des-category .page-title a,
 .single .page-header .box-des-category .page-title a,
+.single .page-header .box-des-category .page-title,
 .category .page-header .box-des-category .page-title {
     text-decoration: none;
     color: #fff;
@@ -2396,7 +2435,7 @@ footer .copy-right a {
     bottom: 0;
     right: 0;
     background: #000;
-    opacity: 0.7;
+    opacity: 0.9;
     z-index: 9;
     cursor: pointer;
     display: none;
@@ -2537,7 +2576,9 @@ footer .copy-right a {
 
 .template-grid-3.grid-default article .entry-content {
     margin-top: 15px;
-    text-align: center;
+    text-align: justify;
+    -moz-text-align-last: center;
+         text-align-last: center;
 }
 
 #memory-popup {
@@ -2850,7 +2891,9 @@ body.search .description_content_search {
 }
 
 .block-about-1>div.block-about-1__content.center {
-    text-align: center;
+    text-align: justify;
+    -moz-text-align-last:center;
+         text-align-last:center;
 }
 
 .block-about-1>div.block-about-1__content.left {
@@ -2923,17 +2966,18 @@ body.search .description_content_search {
     font-size: 50px;
     color: #3e82c3;
     font-weight: normal;
-    margin: 15px 0;
+    margin: 30px 0;
 }
 
 .block-about-3 .block-about-3__top .block-about__des {
     max-width: 1100px;
     margin: 0 auto;
+    margin-bottom: 20px;
     line-height: 30px;
 }
 
 .block-about-3 .block-about-3__bottom {
-    padding: 20px 5%;
+    padding: 25px 5%;
 }
 
 .block-about-3 .block-about-3__bottom ul {
@@ -2975,6 +3019,7 @@ body.search .description_content_search {
     line-height: 25px;
     color: #000;
     font-family: AveriaSerifLibre-Regular;
+    margin-bottom: 5px;
 }
 
 .block-about-3 .block-about-3__bottom ul li .author-name span.cv {
@@ -3250,7 +3295,7 @@ body.search .description_content_search {
 .popup-sos .popup-content {
     position: relative;
     z-index: 10;
-    width: 690px;
+    width: 559px;
     max-height: 82%;
 }
 

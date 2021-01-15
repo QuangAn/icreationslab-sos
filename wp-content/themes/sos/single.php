@@ -47,7 +47,12 @@ get_header();
 		endwhile; // End of the loop.
 		?>
 	</main><!-- #main -->
-	<?php $show_sidebar == 'yes' ? get_sidebar() : ''; ?>
+	<?php 
+		if($cat_id == '4'){
+			$show_sidebar == 'yes' ? get_sidebar() : '';
+		}
+		
+	 ?>
 </div>
 <?php
 get_footer();

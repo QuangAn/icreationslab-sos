@@ -2,6 +2,7 @@
 $posts_per_page = get_field('posts_per_page',  get_the_ID());
 $args = array(
     'post_type' => array( 'the_wall' ),
+    'post_status' => 'publish',
     'posts_per_page'=> $posts_per_page,
 );
 $walls = new WP_Query( $args );

@@ -40,7 +40,7 @@
             </div>
         </form>
         <?php if($wall_id) { 
-            echo '<div class="created_wall">Thank you for having created !</div>';
+            echo '<div class="created_wall">Thank you for your submission!</div>';
         } ?>
     </div>
 </div>

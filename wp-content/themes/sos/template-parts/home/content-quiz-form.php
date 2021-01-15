@@ -22,64 +22,6 @@
 </div>
 
 <script>
-    function processBar(quiz, $count){
-        jQuery('.gfield:nth-child('+ quiz +') input[type=radio]').click(function(){
-            val_input = jQuery('.gfield:nth-child('+ quiz +') input[type=radio]:checked').val();
-            
-            if(val_input){
-                current_bar = (quiz / $count) * 100;
-                jQuery('#process-bar__current').css("width", current_bar + '%');
-            }
-        });
-    }
-    function quiz($count = 3){
-        var quiz = 1;
-        var current_bar = 1;
-        processBar(quiz, $count);
-        
-        jQuery('#quiz-next').click(function(){
-            val_input = jQuery('.gfield:nth-child('+ quiz +') input[type=radio]:checked').val();
-
-            if(val_input){
-                if(quiz < $count){
-                    jQuery('.gfield:nth-child('+ quiz +')').hide();
-                    quiz += 1;
-                    jQuery('.gfield:nth-child('+ quiz +')').show();
-                    val_input = jQuery('.gfield:nth-child('+ quiz +') input[type=radio]:checked').val();
-            
-            if(val_input){
-                current_bar = (quiz / $count) * 100;
-                jQuery('#process-bar__current').css("width", current_bar + '%');
-            }
-                }
-                if(quiz == $count){
-                    val_input = jQuery('.gfield:nth-child('+ quiz +') input[type=radio]:checked').val();
-                    if(val_input){
-                        current_bar = ((quiz) / $count) * 100;
-                        jQuery('#process-bar__current').css("width", current_bar + '%');
-                        jQuery('#gform_submit_button_1').trigger('click');
-                    }
-                }
-                
-            }else{
-
-            }
-            
-            processBar(quiz, $count);
-        });
-        jQuery('#quiz-back').click(function(){
-            if(quiz > 1){
-                jQuery('.gfield:nth-child('+ quiz +')').hide();
-                quiz -= 1;
-                jQuery('.gfield:nth-child('+ quiz +')').show();
-            }
-            current_bar = (quiz / $count) * 100;
-            jQuery('#process-bar__current').css("width", current_bar + '%');
-        });
-        jQuery(document).on('gform_confirmation_loaded', function(event, formId){
-            jQuery("body").addClass('gform-success');
-        });
-    }
     jQuery('document').ready(function(){
         quiz(jQuery('#gform_fields_1 >li').size());
     });

@@ -75,11 +75,11 @@ if ( ! function_exists( 'sos_setup' ) ) :
 			)
 		);
 
-		// Set up the WordPress core custom background feature.
+		// Set up the WordPress core custom backgceil feature.
 		add_theme_support(
-			'custom-background',
+			'custom-backgceil',
 			apply_filters(
-				'sos_custom_background_args',
+				'sos_custom_backgceil_args',
 				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
@@ -411,8 +411,12 @@ function excerpt($limit,$content) {
   $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
   return $excerpt;
 }
+function custom_excerpt_more( $more ) {
+return '';//you can change this to whatever you want
+}
+add_filter( 'excerpt_more', 'custom_excerpt_more' );
 if ( function_exists( 'add_image_size' ) ) {
- add_image_size( 'category-thumb', 779, 438, true);
+ add_image_size( 'category-thumb', 700, 465, true);
  add_image_size( 'wall-thumb', 640, 426, true);
  add_image_size( 'happening-thumb', 535, 605, true);
 }
@@ -518,6 +522,9 @@ function loadpostMemories_init() {
         
     );
     $query = new WP_Query($args);
+    $total = $query->found_posts;
+    $totals_page = ceil($total / $posts_per_page);
+    $current_totals_page = ($offset / $posts_per_page) + 1;
     if($query->have_posts()):
         while($query->have_posts()):$query->the_post();
         	$post_type = get_field('post_type');
@@ -533,9 +540,18 @@ function loadpostMemories_init() {
 </article><!-- #post-<?php the_ID(); ?> -->
 <?php
         endwhile;
+            if($current_totals_page == $totals_page){
+?>
+	<script>
+		
+		jQuery('#load-more').hide();
+	</script>
+<?php
+	}
     endif; wp_reset_query();
 
     $result = ob_get_clean(); 
+
     wp_send_json_success($result);
     die();
 }
@@ -561,6 +577,9 @@ function loadpost_init() {
         'offset'	=> $offset
     );
     $query = new WP_Query($args);
+	$total = $query->found_posts;
+    $totals_page = ceil($total / $posts_per_page);
+    $current_totals_page = ($offset / $posts_per_page) + 1;
     if($query->have_posts()):
         while($query->have_posts()):$query->the_post();
         	$post_type = get_field('post_type');
@@ -627,6 +646,15 @@ function loadpost_init() {
 </article>
 <?php
         endwhile;
+    if($current_totals_page == $totals_page){
+?>
+	<script>
+		
+		jQuery('#load-more').hide();
+	</script>
+<?php
+	}
+
     endif; wp_reset_query();
 
     $result = ob_get_clean(); 
@@ -656,6 +684,9 @@ function loadPostHappening_init() {
         
     );
     $query = new WP_Query($args);
+    $total = $query->found_posts;
+    $totals_page = ceil($total / $posts_per_page);
+    $current_totals_page = ($offset / $posts_per_page) + 1;
     if($query->have_posts()):
         while($query->have_posts()):$query->the_post();
 ?>
@@ -671,6 +702,13 @@ function loadPostHappening_init() {
 	</article><!-- #post-<?php the_ID(); ?> -->
 <?php
         endwhile;
+            if($current_totals_page == $totals_page){
+?>
+	<script>
+		jQuery('#load-more').hide();
+	</script>
+<?php
+	}
     endif; wp_reset_query();
 
     $result = ob_get_clean(); 
@@ -690,13 +728,17 @@ function loadPostWall_init() {
     $offset = (isset($_POST['offset']))?esc_attr($_POST['offset']) : '';
     $args = array(
         'post_type'     => $post_type,
+        'post_status' => 'publish',
         'posts_per_page'=> $posts_per_page,
         'offset'	=> $offset,
         'orderby' 	=>'modified',
-        'order'	=>	'ASC'
+        'order'	=>	'ASC',
         
     );
     $query = new WP_Query($args);
+    $total = $query->found_posts;
+    $totals_page = ceil($total / $posts_per_page);
+    $current_totals_page = ($offset / $posts_per_page) + 1;
     if($query->have_posts()):
         while($query->have_posts()):$query->the_post();
         	$post_type = get_field('post_type');
@@ -717,6 +759,14 @@ function loadPostWall_init() {
 
 <?php
         endwhile;
+            if($current_totals_page == $totals_page){
+?>
+	<script>
+		
+		jQuery('#load-more').hide();
+	</script>
+<?php
+	}
     endif; wp_reset_query();
 
     $result = ob_get_clean(); 
